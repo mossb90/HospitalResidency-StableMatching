@@ -10,11 +10,12 @@
 
 
 
-        <RadioButton Content="Sort by Doctor" HorizontalAlignment="Left" Margin="47,21,0,0" VerticalAlignment="Top" Width="105" Height="39"/>
-        <TextBlock x:Name="Title" HorizontalAlignment="Center" Margin="314,20,81.6,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="39" Width="325" Text="Hospital Resident Assignments by Stable  Matching"/>
-        <TextBox HorizontalAlignment="Left" Height="256" Margin="47,131,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="695" Grid.ColumnSpan="2"/>
-        <RadioButton Content="Sort by Hospital&#xD;&#xA;" HorizontalAlignment="Left" Margin="48,48,0,0" VerticalAlignment="Top"/>
-       
+        <RadioButton x:Name="btn_radioByDoctor" Content="Sort by Doctor" HorizontalAlignment="Left" Margin="47,21,0,0" VerticalAlignment="Top" Width="105" Height="22" RenderTransformOrigin="0.539,1.518" Checked="btn_radioByDoctor_Checked"/>
+        <RadioButton x:Name="btn_radioByHospital" Content="Sort by Hospital&#xD;&#xA;" HorizontalAlignment="Left" Margin="48,48,0,0" VerticalAlignment="Top" Checked="btn_radioByHospital_Checked"/>
+        <TextBlock x:Name="text_title" HorizontalAlignment="Center" Margin="254,21,215.667,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="39" Width="325" Text="Hospital Resident Assignments by Stable  Matching"/>
+        <TextBox x:Name="text_results" HorizontalAlignment="Left" Height="256" Margin="47,131,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="695" Grid.ColumnSpan="2" TextChanged="TextBox_TextChanged"/>
+        <Button x:Name="btn_match" Content="Make Matches" HorizontalAlignment="Left" Margin="315,50,0,0" VerticalAlignment="Top" Width="157" Height="48" Click="Button_Click"/>
+
 
     </Grid>
 </Window>

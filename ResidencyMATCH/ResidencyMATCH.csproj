@@ -65,6 +65,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MatchMaker.cs" />
     <Compile Include="Doctor.cs">
       <DependentUpon>ResidencyDataModel.tt</DependentUpon>
     </Compile>

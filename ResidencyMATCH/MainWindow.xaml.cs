@@ -24,5 +24,25 @@ namespace ResidencyMATCH
         {
             InitializeComponent();
         }
+
+        private void Btn_radioByDoctor_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Btn_radioByHospital_Checked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnClick_match(object sender, RoutedEventArgs e)
+        {
+            //MatchMaker newMatch = new MatchMaker();
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }
