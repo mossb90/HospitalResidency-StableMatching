@@ -15,6 +15,8 @@
           <Property Name="ChoiceHospital3" Type="int" />
           <Property Name="ChoiceHospital4" Type="int" />
           <Property Name="ChoiceHospital5" Type="int" />
+          <Property Name="isMatched" Type="bit" />
+          <Property Name="HospitalMatched" Type="int" />
         </EntityType>
         <EntityType Name="Doctors">
           <Key>
@@ -30,12 +32,14 @@
             <PropertyRef Name="HospitalID" />
           </Key>
           <Property Name="HospitalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NumberOfOpenings" Type="int" Nullable="false" />
           <Property Name="ChoiceDoctor1" Type="int" Nullable="false" />
           <Property Name="ChoiceDoctor2" Type="int" />
           <Property Name="ChoiceDoctor3" Type="int" />
           <Property Name="ChoiceDoctor4" Type="int" />
           <Property Name="ChoiceDoctor5" Type="int" />
+          <Property Name="ResidentCapacity" Type="int" />
+          <Property Name="Openings" Type="int" />
+          <Property Name="isFullyStaffed" Type="bit" />
         </EntityType>
         <EntityType Name="Hospitals">
           <Key>
@@ -45,14 +49,6 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="City" Type="varchar" MaxLength="50" />
           <Property Name="State" Type="varchar" MaxLength="10" />
-        </EntityType>
-        <EntityType Name="MatchResults">
-          <Key>
-            <PropertyRef Name="DoctorID" />
-            <PropertyRef Name="HospitalID" />
-          </Key>
-          <Property Name="DoctorID" Type="int" Nullable="false" />
-          <Property Name="HospitalID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -64,6 +60,18 @@
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <Association Name="FK_DoctorPreferences_HospitalPreferences">
+          <End Role="HospitalPreferences" Type="Self.HospitalPreferences" Multiplicity="0..1" />
+          <End Role="DoctorPreferences" Type="Self.DoctorPreferences" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalPreferences">
+              <PropertyRef Name="HospitalID" />
+            </Principal>
+            <Dependent Role="DoctorPreferences">
+              <PropertyRef Name="HospitalMatched" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Doctors_DoctorPreferences">
           <End Role="DoctorPreferences" Type="Self.DoctorPreferences" Multiplicity="1" />
           <End Role="Doctors" Type="Self.Doctors" Multiplicity="0..1" />
@@ -88,37 +96,16 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_MatchResults_Doctors">
-          <End Role="Doctors" Type="Self.Doctors" Multiplicity="1" />
-          <End Role="MatchResults" Type="Self.MatchResults" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Doctors">
-              <PropertyRef Name="DoctorID" />
-            </Principal>
-            <Dependent Role="MatchResults">
-              <PropertyRef Name="DoctorID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MatchResults_Hospitals">
-          <End Role="Hospitals" Type="Self.Hospitals" Multiplicity="1" />
-          <End Role="MatchResults" Type="Self.MatchResults" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Hospitals">
-              <PropertyRef Name="HospitalID" />
-            </Principal>
-            <Dependent Role="MatchResults">
-              <PropertyRef Name="HospitalID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="StableMatchModelStoreContainer">
           <EntitySet Name="DoctorPreferences" EntityType="Self.DoctorPreferences" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctors" EntityType="Self.Doctors" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HospitalPreferences" EntityType="Self.HospitalPreferences" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Hospitals" EntityType="Self.Hospitals" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="MatchResults" EntityType="Self.MatchResults" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DoctorPreferences_HospitalPreferences" Association="Self.FK_DoctorPreferences_HospitalPreferences">
+            <End Role="HospitalPreferences" EntitySet="HospitalPreferences" />
+            <End Role="DoctorPreferences" EntitySet="DoctorPreferences" />
+          </AssociationSet>
           <AssociationSet Name="FK_Doctors_DoctorPreferences" Association="Self.FK_Doctors_DoctorPreferences">
             <End Role="DoctorPreferences" EntitySet="DoctorPreferences" />
             <End Role="Doctors" EntitySet="Doctors" />
@@ -126,14 +113,6 @@
           <AssociationSet Name="FK_Hospitals_HospitalPreferences" Association="Self.FK_Hospitals_HospitalPreferences">
             <End Role="HospitalPreferences" EntitySet="HospitalPreferences" />
             <End Role="Hospitals" EntitySet="Hospitals" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MatchResults_Doctors" Association="Self.FK_MatchResults_Doctors">
-            <End Role="Doctors" EntitySet="Doctors" />
-            <End Role="MatchResults" EntitySet="MatchResults" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MatchResults_Hospitals" Association="Self.FK_MatchResults_Hospitals">
-            <End Role="Hospitals" EntitySet="Hospitals" />
-            <End Role="MatchResults" EntitySet="MatchResults" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -151,6 +130,9 @@
           <Property Name="ChoiceHospital3" Type="Int32" />
           <Property Name="ChoiceHospital4" Type="Int32" />
           <Property Name="ChoiceHospital5" Type="Int32" />
+          <Property Name="isMatched" Type="Boolean" />
+          <Property Name="HospitalMatched" Type="Int32" />
+          <NavigationProperty Name="HospitalPreference" Relationship="Self.FK_DoctorPreferences_HospitalPreferences" FromRole="DoctorPreferences" ToRole="HospitalPreferences" />
           <NavigationProperty Name="Doctor" Relationship="Self.FK_Doctors_DoctorPreferences" FromRole="DoctorPreferences" ToRole="Doctors" />
         </EntityType>
         <EntityType Name="Doctor">
@@ -162,19 +144,21 @@
           <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="AlmaMater" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="DoctorPreference" Relationship="Self.FK_Doctors_DoctorPreferences" FromRole="Doctors" ToRole="DoctorPreferences" />
-          <NavigationProperty Name="Hospitals" Relationship="Self.MatchResults" FromRole="Doctors" ToRole="Hospitals" />
         </EntityType>
         <EntityType Name="HospitalPreference">
           <Key>
             <PropertyRef Name="HospitalID" />
           </Key>
           <Property Name="HospitalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NumberOfOpenings" Type="Int32" Nullable="false" />
           <Property Name="ChoiceDoctor1" Type="Int32" Nullable="false" />
           <Property Name="ChoiceDoctor2" Type="Int32" />
           <Property Name="ChoiceDoctor3" Type="Int32" />
           <Property Name="ChoiceDoctor4" Type="Int32" />
           <Property Name="ChoiceDoctor5" Type="Int32" />
+          <Property Name="ResidentCapacity" Type="Int32" />
+          <Property Name="Openings" Type="Int32" />
+          <Property Name="isFullyStaffed" Type="Boolean" />
+          <NavigationProperty Name="DoctorPreferences" Relationship="Self.FK_DoctorPreferences_HospitalPreferences" FromRole="HospitalPreferences" ToRole="DoctorPreferences" />
           <NavigationProperty Name="Hospital" Relationship="Self.FK_Hospitals_HospitalPreferences" FromRole="HospitalPreferences" ToRole="Hospitals" />
         </EntityType>
         <EntityType Name="Hospital">
@@ -186,7 +170,6 @@
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="State" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="HospitalPreference" Relationship="Self.FK_Hospitals_HospitalPreferences" FromRole="Hospitals" ToRole="HospitalPreferences" />
-          <NavigationProperty Name="Doctors" Relationship="Self.MatchResults" FromRole="Hospitals" ToRole="Doctors" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -198,6 +181,18 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_DoctorPreferences_HospitalPreferences">
+          <End Role="HospitalPreferences" Type="Self.HospitalPreference" Multiplicity="0..1" />
+          <End Role="DoctorPreferences" Type="Self.DoctorPreference" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HospitalPreferences">
+              <PropertyRef Name="HospitalID" />
+            </Principal>
+            <Dependent Role="DoctorPreferences">
+              <PropertyRef Name="HospitalMatched" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Doctors_DoctorPreferences">
           <End Role="DoctorPreferences" Type="Self.DoctorPreference" Multiplicity="1" />
           <End Role="Doctors" Type="Self.Doctor" Multiplicity="0..1" />
@@ -222,26 +217,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="MatchResults">
-          <End Role="Doctors" Type="Self.Doctor" Multiplicity="*" />
-          <End Role="Hospitals" Type="Self.Hospital" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="StableMatchEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DoctorPreferences" EntityType="Self.DoctorPreference" />
           <EntitySet Name="Doctors" EntityType="Self.Doctor" />
           <EntitySet Name="HospitalPreferences" EntityType="Self.HospitalPreference" />
           <EntitySet Name="Hospitals" EntityType="Self.Hospital" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <AssociationSet Name="FK_DoctorPreferences_HospitalPreferences" Association="Self.FK_DoctorPreferences_HospitalPreferences">
+            <End Role="HospitalPreferences" EntitySet="HospitalPreferences" />
+            <End Role="DoctorPreferences" EntitySet="DoctorPreferences" />
+          </AssociationSet>
           <AssociationSet Name="FK_Doctors_DoctorPreferences" Association="Self.FK_Doctors_DoctorPreferences">
             <End Role="DoctorPreferences" EntitySet="DoctorPreferences" />
             <End Role="Doctors" EntitySet="Doctors" />
           </AssociationSet>
           <AssociationSet Name="FK_Hospitals_HospitalPreferences" Association="Self.FK_Hospitals_HospitalPreferences">
             <End Role="HospitalPreferences" EntitySet="HospitalPreferences" />
-            <End Role="Hospitals" EntitySet="Hospitals" />
-          </AssociationSet>
-          <AssociationSet Name="MatchResults" Association="Self.MatchResults">
-            <End Role="Doctors" EntitySet="Doctors" />
             <End Role="Hospitals" EntitySet="Hospitals" />
           </AssociationSet>
         </EntityContainer>
@@ -260,6 +251,8 @@
                 <ScalarProperty Name="ChoiceHospital3" ColumnName="ChoiceHospital3" />
                 <ScalarProperty Name="ChoiceHospital4" ColumnName="ChoiceHospital4" />
                 <ScalarProperty Name="ChoiceHospital5" ColumnName="ChoiceHospital5" />
+                <ScalarProperty Name="isMatched" ColumnName="isMatched" />
+                <ScalarProperty Name="HospitalMatched" ColumnName="HospitalMatched" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -277,12 +270,14 @@
             <EntityTypeMapping TypeName="StableMatchModel.HospitalPreference">
               <MappingFragment StoreEntitySet="HospitalPreferences">
                 <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
-                <ScalarProperty Name="NumberOfOpenings" ColumnName="NumberOfOpenings" />
                 <ScalarProperty Name="ChoiceDoctor1" ColumnName="ChoiceDoctor1" />
                 <ScalarProperty Name="ChoiceDoctor2" ColumnName="ChoiceDoctor2" />
                 <ScalarProperty Name="ChoiceDoctor3" ColumnName="ChoiceDoctor3" />
                 <ScalarProperty Name="ChoiceDoctor4" ColumnName="ChoiceDoctor4" />
                 <ScalarProperty Name="ChoiceDoctor5" ColumnName="ChoiceDoctor5" />
+                <ScalarProperty Name="ResidentCapacity" ColumnName="ResidentCapacity" />
+                <ScalarProperty Name="Openings" ColumnName="Openings" />
+                <ScalarProperty Name="isFullyStaffed" ColumnName="isFullyStaffed" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -307,14 +302,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="MatchResults" TypeName="StableMatchModel.MatchResults" StoreEntitySet="MatchResults">
-            <EndProperty Name="Doctors">
-              <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
-            </EndProperty>
-            <EndProperty Name="Hospitals">
-              <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

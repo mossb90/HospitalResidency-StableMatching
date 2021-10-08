@@ -14,19 +14,11 @@ namespace ResidencyMATCH
     
     public partial class Doctor
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Doctor()
-        {
-            this.Hospitals = new HashSet<Hospital>();
-        }
-    
         public int DoctorID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string AlmaMater { get; set; }
     
         public virtual DoctorPreference DoctorPreference { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Hospital> Hospitals { get; set; }
     }
 }

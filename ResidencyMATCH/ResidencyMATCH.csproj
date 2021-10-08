@@ -65,36 +65,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="MatchMaker.cs" />
+    <Compile Include="HospitalPreference2.cs" />
+    <Compile Include="DoctorPreference2.cs" />
     <Compile Include="Doctor.cs">
-      <DependentUpon>ResidencyDataModel.tt</DependentUpon>
+      <DependentUpon>StableMatch.tt</DependentUpon>
     </Compile>
     <Compile Include="DoctorPreference.cs">
-      <DependentUpon>ResidencyDataModel.tt</DependentUpon>
+      <DependentUpon>StableMatch.tt</DependentUpon>
     </Compile>
     <Compile Include="Hospital.cs">
-      <DependentUpon>ResidencyDataModel.tt</DependentUpon>
+      <DependentUpon>StableMatch.tt</DependentUpon>
     </Compile>
     <Compile Include="HospitalPreference.cs">
-      <DependentUpon>ResidencyDataModel.tt</DependentUpon>
+      <DependentUpon>StableMatch.tt</DependentUpon>
     </Compile>
-    <Compile Include="ResidencyDataModel.Context.cs">
+    <Compile Include="MatchMaker.cs" />
+    <Compile Include="StableMatch.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ResidencyDataModel.Context.tt</DependentUpon>
+      <DependentUpon>StableMatch.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ResidencyDataModel.cs">
+    <Compile Include="StableMatch.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ResidencyDataModel.tt</DependentUpon>
+      <DependentUpon>StableMatch.tt</DependentUpon>
     </Compile>
-    <Compile Include="ResidencyDataModel.Designer.cs">
+    <Compile Include="StableMatch.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ResidencyDataModel.edmx</DependentUpon>
+      <DependentUpon>StableMatch.edmx</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>ResidencyDataModel.tt</DependentUpon>
+      <DependentUpon>StableMatch.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -132,31 +134,31 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="ResidencyDataModel.edmx">
+    <EntityDeploy Include="StableMatch.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ResidencyDataModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>StableMatch.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ResidencyDataModel.edmx.diagram">
-      <DependentUpon>ResidencyDataModel.edmx</DependentUpon>
+    <None Include="StableMatch.edmx.diagram">
+      <DependentUpon>StableMatch.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ResidencyDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ResidencyDataModel.Context.cs</LastGenOutput>
-      <DependentUpon>ResidencyDataModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="ResidencyDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ResidencyDataModel.edmx</DependentUpon>
-      <LastGenOutput>ResidencyDataModel.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="StableMatch.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StableMatch.edmx</DependentUpon>
+      <LastGenOutput>StableMatch.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="StableMatch.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StableMatch.edmx</DependentUpon>
+      <LastGenOutput>StableMatch.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

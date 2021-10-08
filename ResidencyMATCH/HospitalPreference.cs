@@ -14,14 +14,24 @@ namespace ResidencyMATCH
     
     public partial class HospitalPreference
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        //public HospitalPreference()
+        //{
+        //    this.DoctorPreferences = new HashSet<DoctorPreference>();
+        //}
+    
         public int HospitalID { get; set; }
-        public int NumberOfOpenings { get; set; }
         public int ChoiceDoctor1 { get; set; }
         public Nullable<int> ChoiceDoctor2 { get; set; }
         public Nullable<int> ChoiceDoctor3 { get; set; }
         public Nullable<int> ChoiceDoctor4 { get; set; }
         public Nullable<int> ChoiceDoctor5 { get; set; }
+        public Nullable<int> ResidentCapacity { get; set; }
+        public Nullable<int> Openings { get; set; }
+        public Nullable<bool> isFullyStaffed { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<DoctorPreference> DoctorPreferences { get; set; }
         public virtual Hospital Hospital { get; set; }
     }
 }

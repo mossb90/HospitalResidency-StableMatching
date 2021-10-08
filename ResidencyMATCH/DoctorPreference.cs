@@ -20,7 +20,10 @@ namespace ResidencyMATCH
         public Nullable<int> ChoiceHospital3 { get; set; }
         public Nullable<int> ChoiceHospital4 { get; set; }
         public Nullable<int> ChoiceHospital5 { get; set; }
+        public Nullable<bool> isMatched { get; set; }
+        public Nullable<int> HospitalMatched { get; set; }
     
+        public virtual HospitalPreference HospitalPreference { get; set; }
         public virtual Doctor Doctor { get; set; }
     }
 }

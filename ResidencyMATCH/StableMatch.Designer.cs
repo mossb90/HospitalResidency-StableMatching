@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\gdgut\OneDrive\Desktop\Stable Matching Project\HospitalResidency-StableMatching\ResidencyMATCH\ResidencyDataModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\brend\Code\MSSA\HospitalResidency-StableMatching\ResidencyMATCH\StableMatch.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
