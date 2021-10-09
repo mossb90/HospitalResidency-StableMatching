@@ -24,7 +24,8 @@ namespace ResidencyMATCH
         StableMatchEntities Context = new StableMatchEntities();
         List<DoctorPreference> doctorPool = new List<DoctorPreference>();
         List<HospitalPreference> hospitalPool = new List<HospitalPreference>();
-        List<int> PreferredHospitals;
+        MatchMaker match = new MatchMaker();
+        //List<int> PreferredHospitals;
 
         public MainWindow()
         {
@@ -33,20 +34,11 @@ namespace ResidencyMATCH
             foreach (DoctorPreference docEntry in Context.DoctorPreferences)
             {
                 Console.WriteLine("Look there is DoctorID data: " + docEntry.DoctorID);
-                doctorPool.Add(docEntry);
-
-                //docEntry.PreferredHospitals.Add(docEntry.ChoiceHospital1);
-                //if (docEntry.ChoiceHospital2 != null) docEntry.PreferredHospitals.Add((int)docEntry.ChoiceHospital2);
-                //if (docEntry.ChoiceHospital3 != null) docEntry.PreferredHospitals.Add((int)docEntry.ChoiceHospital3);
-                //if (docEntry.ChoiceHospital4 != null) docEntry.PreferredHospitals.Add((int)docEntry.ChoiceHospital4);
-                //if (docEntry.ChoiceHospital5 != null) docEntry.PreferredHospitals.Add((int)docEntry.ChoiceHospital5);
-
-
+                doctorPool.Add(docEntry);              
             }
 
             foreach (HospitalPreference hospitalEntry in Context.HospitalPreferences)
             {
-
                 hospitalPool.Add(hospitalEntry);
             }
 
@@ -54,8 +46,7 @@ namespace ResidencyMATCH
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
-            MatchMaker.MakeMatches(doctorPool, hospitalPool);
+            match.MakeMatches(doctorPool, hospitalPool);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 namespace ResidencyMATCH
 {
     
-    public static class MatchMaker
+    public class MatchMaker
     {
+
+        public Dictionary<int, List<int>> preferredHospitalsDict = new Dictionary<int, List<int>>();
+        public Dictionary<int, List<int>> preferredDoctorsDict = new Dictionary<int, List<int>>();
+        public Dictionary<int, List<int>> hospitalResidentsMatchedDict = new Dictionary<int, List<int>>();
         
 
         /*
@@ -38,42 +42,83 @@ namespace ResidencyMATCH
          - recursively run through the program again matchMade = true && if not all the doctorPool.IsMatched are true (if someone had their match taken away)
          */
 
-        public static void MakeMatches( List<DoctorPreference> doctorPool,  List<HospitalPreference> hospitalPool)
+        public void MakeMatches( List<DoctorPreference> doctorPool, List<HospitalPreference> hospitalPool)
         {
-            // think about if ref's required here
+            // "Temp" lists to feed data into class defined dictionaries
+            List<int> hospitalChoices = new List<int>();                
+            List<int> doctorChoices = new List<int>();
+            List<int> hospitalResidentsMatched = new List<int>();          
+
+            // Populates preferredHospitalsDict with doctor's choices of hospitals for residencies 
+            // key = DoctorID value = list of ChoiceHospital1-5
+            foreach (DoctorPreference doctor in doctorPool)
+            { 
+                hospitalChoices.Add(doctor.ChoiceHospital1);
+                if (doctor.ChoiceHospital2 != null) hospitalChoices.Add((int)doctor.ChoiceHospital2);
+                if (doctor.ChoiceHospital3 != null) hospitalChoices.Add((int)doctor.ChoiceHospital3);
+                if (doctor.ChoiceHospital4 != null) hospitalChoices.Add((int)doctor.ChoiceHospital4);
+                if (doctor.ChoiceHospital5 != null) hospitalChoices.Add((int)doctor.ChoiceHospital5);
+
+                preferredHospitalsDict.Add(doctor.DoctorID, hospitalChoices);
+            }
+
+            // Populates preferredDoctorsDict with hospital's choices of doctors for residencies 
+            // key = HospitalID value = list of ChoiceDoctor1-5
+            foreach (HospitalPreference hospital in hospitalPool)
+            {
+                doctorChoices.Add(hospital.ChoiceDoctor1);
+                if (hospital.ChoiceDoctor2 != null) doctorChoices.Add((int)hospital.ChoiceDoctor2);
+                if (hospital.ChoiceDoctor3 != null) doctorChoices.Add((int)hospital.ChoiceDoctor3);
+                if (hospital.ChoiceDoctor4 != null) doctorChoices.Add((int)hospital.ChoiceDoctor4);
+                if (hospital.ChoiceDoctor5 != null) doctorChoices.Add((int)hospital.ChoiceDoctor5);
+
+                preferredDoctorsDict.Add(hospital.HospitalID, doctorChoices);
+            }
+
+            // Populates hospitalResidentsMatchedDict with doctors matched to each hospital residency progrom
+            // key = HospitalID value = list of matched residents
+            foreach (HospitalPreference hospital in hospitalPool)
+            {
+                hospitalResidentsMatchedDict.Add(hospital.HospitalID, hospitalResidentsMatched);
+            }
+
             bool matchMade = false;
             foreach (DoctorPreference doctor in doctorPool)
             {
                 if (doctor.isMatched == false)
                 {
-                    
-
-                    foreach (int hospital in doctor.PreferredHospitals)
+                    List<int> preferredHospitals = preferredHospitalsDict[doctor.DoctorID];
+                    foreach (int hospitalChoice in preferredHospitals)
                     {
-                        HospitalPreference currentHospital = hospitalPool.Find(x => x.HospitalID == hospital);
-                        if ((currentHospital.PreferredDoctors.Contains(doctor.DoctorID)) && (currentHospital.Openings >= 1))
+                        List<int> preferredDoctors = preferredDoctorsDict[hospitalChoice];
+                        HospitalPreference currentHospital = hospitalPool.Find(x => x.HospitalID == hospitalChoice);
+                        if (preferredDoctors.Contains(doctor.DoctorID) && (currentHospital.Openings >= 1))
                         {
                             doctor.isMatched = true;
                             doctor.HospitalMatched = currentHospital.HospitalID;
-                            currentHospital.ResidentsMatched.Add(doctor.DoctorID);
+                            hospitalResidentsMatched = hospitalResidentsMatchedDict[currentHospital.HospitalID];
+                            hospitalResidentsMatched.Add(doctor.DoctorID);
+                            hospitalResidentsMatchedDict[currentHospital.HospitalID] = hospitalResidentsMatched;
                             currentHospital.Openings -= 1;
                             matchMade = true;
                             break;
                         }
-                        else if ((currentHospital.PreferredDoctors.Contains(doctor.DoctorID)) && (currentHospital.PreferredDoctors[0] == doctor.DoctorID))
+                        else if (preferredDoctors.Contains(doctor.DoctorID) && (preferredDoctors[0] == doctor.DoctorID))
                         {
                             doctor.isMatched = true;
                             doctor.HospitalMatched = currentHospital.HospitalID;
                             int lowestRankDoctorIDIndex = -1;    // Index of lowest ranked doctor already matched that will get bumped
-                            foreach (int alreadyMatched in currentHospital.ResidentsMatched)
+                            foreach (int alreadyMatched in hospitalResidentsMatchedDict[currentHospital.HospitalID])
                             {
                                 if (currentHospital.PreferredDoctors.IndexOf(alreadyMatched) > lowestRankDoctorIDIndex)
                                 {
-                                    lowestRankDoctorIDIndex = currentHospital.PreferredDoctors.IndexOf(alreadyMatched);
+                                    lowestRankDoctorIDIndex = preferredDoctors.IndexOf(alreadyMatched);
                                 }
                             }
-                            currentHospital.ResidentsMatched.Remove(currentHospital.PreferredDoctors[lowestRankDoctorIDIndex]);
-                            currentHospital.ResidentsMatched.Add(doctor.DoctorID);
+                            hospitalResidentsMatched = hospitalResidentsMatchedDict[currentHospital.HospitalID];
+                            hospitalResidentsMatched.Remove(preferredDoctors[lowestRankDoctorIDIndex]);
+                            hospitalResidentsMatched.Add(doctor.DoctorID);
+                            hospitalResidentsMatchedDict[currentHospital.HospitalID] = hospitalResidentsMatched;
                             DoctorPreference bumpedDoctor = doctorPool.Find(x => x.DoctorID == currentHospital.PreferredDoctors[lowestRankDoctorIDIndex]);
                             bumpedDoctor.isMatched = false;
                             bumpedDoctor.HospitalMatched = null;
@@ -83,9 +128,24 @@ namespace ResidencyMATCH
                     }
                 }
             }
+            Console.WriteLine("finished first run through");
             if((matchMade = true) && doctorPool.Any(m => !(bool)m.isMatched)){
                 MakeMatches(doctorPool, hospitalPool);
             }
+            
+            Console.WriteLine("Matching: " + hospitalResidentsMatchedDict);
+            foreach (var pair in hospitalResidentsMatchedDict)
+            {
+                hospitalResidentsMatched = hospitalResidentsMatchedDict[pair.Key];
+                Console.WriteLine($"Matched for  {pair.Key}: ");
+                foreach (var match in hospitalResidentsMatched)
+                {
+                    Console.WriteLine(match);
+                }
+        
+                Console.WriteLine();
+            }
         }
+        
     }
 }

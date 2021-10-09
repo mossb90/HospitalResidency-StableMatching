@@ -9,7 +9,7 @@ namespace ResidencyMATCH
 {
     public partial class DoctorPreference
     {
-        public List<int> PreferredHospitals { get; set; }
+        //public List<int> PreferredHospitals { get; set; }
         public DoctorPreference()
         {
             
