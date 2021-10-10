@@ -78,15 +78,6 @@ namespace ResidencyMATCH
                 preferredDoctorsDict.Add(hospital.HospitalID, doctorChoices);
             }
 
-            // Populates hospitalResidentsMatchedDict with doctors matched to each hospital residency progrom
-            // key = HospitalID value = list of matched residents
-            ArrayList hospitalResidentsMatched = new ArrayList();
-            hospitalResidentsMatched.Clear();
-            foreach (HospitalPreference hospital in hospitalPool)
-            {
-                hospitalResidentsMatchedDict.Add(hospital.HospitalID, hospitalResidentsMatched);
-            }
-
             bool matchMade = false;
             foreach (DoctorPreference doctor in doctorPool)
             {
@@ -101,12 +92,13 @@ namespace ResidencyMATCH
                         {
                             doctor.isMatched = true;
                             doctor.HospitalMatched = currentHospital.HospitalID;
-                            //this is where the problem is
-
-                            hospitalResidentsMatched.Clear();
-                            hospitalResidentsMatched = hospitalResidentsMatchedDict[currentHospital.HospitalID];
-                            hospitalResidentsMatched.Add(doctor.DoctorID);
-                            hospitalResidentsMatchedDict[currentHospital.HospitalID] = hospitalResidentsMatched;
+                            //this is where the problem is, when it loads 
+                            //Console.WriteLine(currentHospital.HospitalID);
+                            if (hospitalResidentsMatchedDict.ContainsKey(currentHospital.HospitalID))
+                            {
+                                hospitalResidentsMatchedDict[currentHospital.HospitalID].Add(doctor.DoctorID);
+                            }
+                            else hospitalResidentsMatchedDict.Add(currentHospital.HospitalID, new ArrayList() { doctor.DoctorID });
                             currentHospital.Openings -= 1;
                             matchMade = true;
                             break;
@@ -123,10 +115,12 @@ namespace ResidencyMATCH
                                     lowestRankDoctorIDIndex = preferredDoctors.IndexOf(alreadyMatched);
                                 }
                             }
-                            hospitalResidentsMatched = hospitalResidentsMatchedDict[currentHospital.HospitalID];
-                            hospitalResidentsMatched.Remove(preferredDoctors[lowestRankDoctorIDIndex]);
-                            hospitalResidentsMatched.Add(doctor.DoctorID);
-                            hospitalResidentsMatchedDict[currentHospital.HospitalID] = hospitalResidentsMatched;
+                            hospitalResidentsMatchedDict[currentHospital.HospitalID].Remove(preferredDoctors[lowestRankDoctorIDIndex]);
+                            if (hospitalResidentsMatchedDict.ContainsKey(currentHospital.HospitalID))
+                            {
+                                hospitalResidentsMatchedDict[currentHospital.HospitalID].Add(doctor.DoctorID);
+                            }
+                            else hospitalResidentsMatchedDict.Add(currentHospital.HospitalID, new ArrayList() { doctor.DoctorID });
                             DoctorPreference bumpedDoctor = doctorPool.Find(x => x.DoctorID == preferredDoctors[lowestRankDoctorIDIndex]);
                             bumpedDoctor.isMatched = false;
                             bumpedDoctor.HospitalMatched = null;
@@ -144,9 +138,8 @@ namespace ResidencyMATCH
             Console.WriteLine("Matching: ");
             foreach (KeyValuePair<int, ArrayList> pair in hospitalResidentsMatchedDict)
             {
-                hospitalResidentsMatched = hospitalResidentsMatchedDict[pair.Key];
                 Console.WriteLine($"Matches for  {pair.Key}: ");
-                foreach (var match in hospitalResidentsMatched)
+                foreach (var match in hospitalResidentsMatchedDict[pair.Key])
                 {
                     Console.WriteLine(match);
                 }
