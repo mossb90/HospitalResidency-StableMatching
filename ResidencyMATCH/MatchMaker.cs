@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,7 @@ namespace ResidencyMATCH
 
         public Dictionary<int, List<int>> preferredHospitalsDict = new Dictionary<int, List<int>>();
         public Dictionary<int, List<int>> preferredDoctorsDict = new Dictionary<int, List<int>>();
-        public Dictionary<int, List<int>> hospitalResidentsMatchedDict = new Dictionary<int, List<int>>();
+        public Dictionary<int, ArrayList> hospitalResidentsMatchedDict = new Dictionary<int, ArrayList>();
         
 
         /*
@@ -44,15 +45,14 @@ namespace ResidencyMATCH
 
         public void MakeMatches( List<DoctorPreference> doctorPool, List<HospitalPreference> hospitalPool)
         {
-            // "Temp" lists to feed data into class defined dictionaries
-            List<int> hospitalChoices = new List<int>();                
-            List<int> doctorChoices = new List<int>();
-            List<int> hospitalResidentsMatched = new List<int>();          
-
+            
             // Populates preferredHospitalsDict with doctor's choices of hospitals for residencies 
             // key = DoctorID value = list of ChoiceHospital1-5
             foreach (DoctorPreference doctor in doctorPool)
-            { 
+            {
+                List<int> hospitalChoices = new List<int>();
+                hospitalChoices.Clear();
+                
                 hospitalChoices.Add(doctor.ChoiceHospital1);
                 if (doctor.ChoiceHospital2 != null) hospitalChoices.Add((int)doctor.ChoiceHospital2);
                 if (doctor.ChoiceHospital3 != null) hospitalChoices.Add((int)doctor.ChoiceHospital3);
@@ -66,6 +66,9 @@ namespace ResidencyMATCH
             // key = HospitalID value = list of ChoiceDoctor1-5
             foreach (HospitalPreference hospital in hospitalPool)
             {
+                List<int> doctorChoices = new List<int>();
+                doctorChoices.Clear();
+
                 doctorChoices.Add(hospital.ChoiceDoctor1);
                 if (hospital.ChoiceDoctor2 != null) doctorChoices.Add((int)hospital.ChoiceDoctor2);
                 if (hospital.ChoiceDoctor3 != null) doctorChoices.Add((int)hospital.ChoiceDoctor3);
@@ -77,6 +80,8 @@ namespace ResidencyMATCH
 
             // Populates hospitalResidentsMatchedDict with doctors matched to each hospital residency progrom
             // key = HospitalID value = list of matched residents
+            ArrayList hospitalResidentsMatched = new ArrayList();
+            hospitalResidentsMatched.Clear();
             foreach (HospitalPreference hospital in hospitalPool)
             {
                 hospitalResidentsMatchedDict.Add(hospital.HospitalID, hospitalResidentsMatched);
@@ -96,6 +101,9 @@ namespace ResidencyMATCH
                         {
                             doctor.isMatched = true;
                             doctor.HospitalMatched = currentHospital.HospitalID;
+                            //this is where the problem is
+
+                            hospitalResidentsMatched.Clear();
                             hospitalResidentsMatched = hospitalResidentsMatchedDict[currentHospital.HospitalID];
                             hospitalResidentsMatched.Add(doctor.DoctorID);
                             hospitalResidentsMatchedDict[currentHospital.HospitalID] = hospitalResidentsMatched;
@@ -110,7 +118,7 @@ namespace ResidencyMATCH
                             int lowestRankDoctorIDIndex = -1;    // Index of lowest ranked doctor already matched that will get bumped
                             foreach (int alreadyMatched in hospitalResidentsMatchedDict[currentHospital.HospitalID])
                             {
-                                if (currentHospital.PreferredDoctors.IndexOf(alreadyMatched) > lowestRankDoctorIDIndex)
+                                if (preferredDoctors.IndexOf(alreadyMatched) > lowestRankDoctorIDIndex)
                                 {
                                     lowestRankDoctorIDIndex = preferredDoctors.IndexOf(alreadyMatched);
                                 }
@@ -119,7 +127,7 @@ namespace ResidencyMATCH
                             hospitalResidentsMatched.Remove(preferredDoctors[lowestRankDoctorIDIndex]);
                             hospitalResidentsMatched.Add(doctor.DoctorID);
                             hospitalResidentsMatchedDict[currentHospital.HospitalID] = hospitalResidentsMatched;
-                            DoctorPreference bumpedDoctor = doctorPool.Find(x => x.DoctorID == currentHospital.PreferredDoctors[lowestRankDoctorIDIndex]);
+                            DoctorPreference bumpedDoctor = doctorPool.Find(x => x.DoctorID == preferredDoctors[lowestRankDoctorIDIndex]);
                             bumpedDoctor.isMatched = false;
                             bumpedDoctor.HospitalMatched = null;
                             matchMade = true;
@@ -133,11 +141,11 @@ namespace ResidencyMATCH
                 MakeMatches(doctorPool, hospitalPool);
             }
             
-            Console.WriteLine("Matching: " + hospitalResidentsMatchedDict);
-            foreach (var pair in hospitalResidentsMatchedDict)
+            Console.WriteLine("Matching: ");
+            foreach (KeyValuePair<int, ArrayList> pair in hospitalResidentsMatchedDict)
             {
                 hospitalResidentsMatched = hospitalResidentsMatchedDict[pair.Key];
-                Console.WriteLine($"Matched for  {pair.Key}: ");
+                Console.WriteLine($"Matches for  {pair.Key}: ");
                 foreach (var match in hospitalResidentsMatched)
                 {
                     Console.WriteLine(match);

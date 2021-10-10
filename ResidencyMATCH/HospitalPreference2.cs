@@ -8,8 +8,8 @@ namespace ResidencyMATCH
 {
     public partial class HospitalPreference
     {
-        public List<int> PreferredDoctors { get; set; }
-        public List<int> ResidentsMatched { get; set; }
+        //public List<int> PreferredDoctors { get; set; }
+        //public List<int> ResidentsMatched { get; set; }
 
         public HospitalPreference()
         {
