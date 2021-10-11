@@ -217,7 +217,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="StableMatchEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="StableMatchEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="DoctorPreferences" EntityType="Self.DoctorPreference" />
           <EntitySet Name="Doctors" EntityType="Self.Doctor" />
           <EntitySet Name="HospitalPreferences" EntityType="Self.HospitalPreference" />
@@ -241,7 +241,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="StableMatchModelStoreContainer" CdmEntityContainer="StableMatchEntities">
+        <EntityContainerMapping StorageEntityContainer="StableMatchModelStoreContainer" CdmEntityContainer="StableMatchEntities1">
           <EntitySetMapping Name="DoctorPreferences">
             <EntityTypeMapping TypeName="StableMatchModel.DoctorPreference">
               <MappingFragment StoreEntitySet="DoctorPreferences">

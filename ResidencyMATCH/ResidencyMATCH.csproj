@@ -42,6 +42,7 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -65,38 +66,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="HospitalPreference2.cs" />
-    <Compile Include="DoctorPreference2.cs" />
     <Compile Include="Doctor.cs">
-      <DependentUpon>StableMatch.tt</DependentUpon>
+      <DependentUpon>StableMatchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DoctorPreference.cs">
-      <DependentUpon>StableMatch.tt</DependentUpon>
+      <DependentUpon>StableMatchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Hospital.cs">
-      <DependentUpon>StableMatch.tt</DependentUpon>
+      <DependentUpon>StableMatchModel.tt</DependentUpon>
     </Compile>
     <Compile Include="HospitalPreference.cs">
-      <DependentUpon>StableMatch.tt</DependentUpon>
+      <DependentUpon>StableMatchModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="HospitalPreference2.cs" />
+    <Compile Include="DoctorPreference2.cs" />
     <Compile Include="MatchMaker.cs" />
-    <Compile Include="StableMatch.Context.cs">
+    <Compile Include="StableMatchModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StableMatch.Context.tt</DependentUpon>
+      <DependentUpon>StableMatchModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="StableMatch.cs">
+    <Compile Include="StableMatchModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StableMatch.tt</DependentUpon>
+      <DependentUpon>StableMatchModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="StableMatch.Designer.cs">
+    <Compile Include="StableMatchModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StableMatch.edmx</DependentUpon>
+      <DependentUpon>StableMatchModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="sysdiagram.cs">
-      <DependentUpon>StableMatch.tt</DependentUpon>
+      <DependentUpon>StableMatchModel.tt</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -134,12 +135,12 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="StableMatch.edmx">
+    <EntityDeploy Include="StableMatchModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StableMatch.Designer.cs</LastGenOutput>
+      <LastGenOutput>StableMatchModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="StableMatch.edmx.diagram">
-      <DependentUpon>StableMatch.edmx</DependentUpon>
+    <None Include="StableMatchModel.edmx.diagram">
+      <DependentUpon>StableMatchModel.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -149,15 +150,17 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="StableMatch.Context.tt">
+    <Resource Include="Finding the perfect Logo.png" />
+    <Resource Include="Perfect Match Logo.png" />
+    <Content Include="StableMatchModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StableMatch.edmx</DependentUpon>
-      <LastGenOutput>StableMatch.Context.cs</LastGenOutput>
+      <DependentUpon>StableMatchModel.edmx</DependentUpon>
+      <LastGenOutput>StableMatchModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="StableMatch.tt">
+    <Content Include="StableMatchModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StableMatch.edmx</DependentUpon>
-      <LastGenOutput>StableMatch.cs</LastGenOutput>
+      <DependentUpon>StableMatchModel.edmx</DependentUpon>
+      <LastGenOutput>StableMatchModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

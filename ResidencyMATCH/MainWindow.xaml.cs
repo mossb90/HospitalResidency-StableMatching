@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 
+
+
 namespace ResidencyMATCH
 {
     /// <summary>
@@ -21,7 +23,7 @@ namespace ResidencyMATCH
     /// </summary>
     public partial class MainWindow : Window
     {
-        StableMatchEntities Context = new StableMatchEntities();
+        StableMatchEntities1 Context = new StableMatchEntities1();
         List<DoctorPreference> doctorPool = new List<DoctorPreference>();
         List<HospitalPreference> hospitalPool = new List<HospitalPreference>();
         MatchMaker match = new MatchMaker();
@@ -30,7 +32,10 @@ namespace ResidencyMATCH
         public MainWindow()
         {
             InitializeComponent();
+            ComboBoxLoad();
             
+       
+
             foreach (DoctorPreference docEntry in Context.DoctorPreferences)
             {
                 Console.WriteLine("Look there is DoctorID data: " + docEntry.DoctorID);
@@ -44,15 +49,28 @@ namespace ResidencyMATCH
 
         }
 
+        //Combo Box Loads Names of Doctors to Select matches from
+        public void ComboBoxLoad()
+        {
+            List<Doctor> docNames = Context.Doctors.ToList();
+            cbxDoctorName.ItemsSource = docNames;
+        }
+
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            match.MakeMatches(doctorPool, hospitalPool);
+            //match.MakeMatches(doctorPool, hospitalPool);
+
+
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+        public void DisplayResults()
         {
-
+            var matchResults = Context.Docg
+            text_results.Text = 
         }
+        #region Unused controls 
 
         private void btn_radioByDoctor_Checked(object sender, RoutedEventArgs e)
         {
@@ -63,5 +81,16 @@ namespace ResidencyMATCH
         {
 
         }
+
+        private void text_results_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+
+
+        #endregion
+
+  
     }
 }
