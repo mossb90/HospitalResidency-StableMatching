@@ -14,11 +14,11 @@ namespace ResidencyMATCH
     
     public partial class HospitalPreference
     {
-       // [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-       // public HospitalPreference()
-        //{
-            //this.DoctorPreferences = new HashSet<DoctorPreference>();
-       // }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public HospitalPreference()
+        {
+            this.DoctorPreferences = new HashSet<DoctorPreference>();
+        }
     
         public int HospitalID { get; set; }
         public int ChoiceDoctor1 { get; set; }

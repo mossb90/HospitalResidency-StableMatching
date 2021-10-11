@@ -23,7 +23,7 @@ namespace ResidencyMATCH
     /// </summary>
     public partial class MainWindow : Window
     {
-        StableMatchEntities1 Context = new StableMatchEntities1();
+        StableMatchEntities Context = new StableMatchEntities();
         List<DoctorPreference> doctorPool = new List<DoctorPreference>();
         List<HospitalPreference> hospitalPool = new List<HospitalPreference>();
         MatchMaker match = new MatchMaker();
@@ -59,7 +59,7 @@ namespace ResidencyMATCH
         
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //match.MakeMatches(doctorPool, hospitalPool);
+            match.MakeMatches(doctorPool, hospitalPool);
 
 
         }
@@ -67,8 +67,8 @@ namespace ResidencyMATCH
 
         public void DisplayResults()
         {
-            var matchResults = Context.Docg
-            text_results.Text = 
+            //var matchResults = Context.Docg
+            //text_results.Text = 
         }
         #region Unused controls 
 

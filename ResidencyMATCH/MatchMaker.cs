@@ -92,8 +92,7 @@ namespace ResidencyMATCH
                         {
                             doctor.isMatched = true;
                             doctor.HospitalMatched = currentHospital.HospitalID;
-                            //this is where the problem is, when it loads 
-                            //Console.WriteLine(currentHospital.HospitalID);
+                         
                             if (hospitalResidentsMatchedDict.ContainsKey(currentHospital.HospitalID))
                             {
                                 hospitalResidentsMatchedDict[currentHospital.HospitalID].Add(doctor.DoctorID);
@@ -135,6 +134,7 @@ namespace ResidencyMATCH
                 MakeMatches(doctorPool, hospitalPool);
             }
             
+            SaveChanges
             Console.WriteLine("Matching: ");
             foreach (KeyValuePair<int, ArrayList> pair in hospitalResidentsMatchedDict)
             {
