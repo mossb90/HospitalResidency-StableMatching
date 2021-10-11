@@ -13,10 +13,10 @@ namespace ResidencyMATCH
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class StableMatchEntities1 : DbContext
+    public partial class StableMatchEntities : DbContext
     {
-        public StableMatchEntities1()
-            : base("name=StableMatchEntities1")
+        public StableMatchEntities()
+            : base("name=StableMatchEntities")
         {
         }
     
@@ -30,6 +30,5 @@ namespace ResidencyMATCH
         public virtual DbSet<HospitalPreference> HospitalPreferences { get; set; }
         public virtual DbSet<Hospital> Hospitals { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        
     }
 }

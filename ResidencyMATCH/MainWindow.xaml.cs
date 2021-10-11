@@ -67,8 +67,8 @@ namespace ResidencyMATCH
 
         public void DisplayResults()
         {
-            //var matchResults = Context.Docg
-            //text_results.Text = 
+            //var matchResults = (from docResults in Context.D join 
+            //text_results.Text =
         }
         #region Unused controls 
 
@@ -89,8 +89,14 @@ namespace ResidencyMATCH
 
 
 
+
         #endregion
 
-  
+        private void cbxDoctorName_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedDoctor = cbxDoctorName.SelectedItem as Doctor;
+
+            MessageBox.Show(selectedDoctor.DoctorID.ToString());
+        }
     }
 }

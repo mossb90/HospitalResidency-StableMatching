@@ -945,7 +945,7 @@
         </Button>
 
         <ComboBox x:Name="cbxDoctorName" 
-                  ItemsSource="{Binding Doc}" DisplayMemberPath="FirstName" HorizontalAlignment="Left" 
+                  ItemsSource="{Binding Doc}" SelectionChanged="cbxDoctorName_SelectionChanged" SelectedItem="DoctorID" DisplayMemberPath="LastName" HorizontalAlignment="Left" 
                   Margin="195,212,0,0" 
                   VerticalAlignment="Top" 
                   Width="145" Height="35" BorderThickness="0" Cursor="Arrow" IsReadOnly="True" FontFamily="Calibri Light" FontStretch="ExtraExpanded" Style="{DynamicResource ComboBoxStyle1}" >
