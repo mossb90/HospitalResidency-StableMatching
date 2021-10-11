@@ -78,7 +78,6 @@
     <Compile Include="HospitalPreference.cs">
       <DependentUpon>StableMatchModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="HospitalPreference2.cs" />
     <Compile Include="MatchMaker.cs" />
     <Compile Include="StableMatchModel.Context.cs">
       <AutoGen>True</AutoGen>
