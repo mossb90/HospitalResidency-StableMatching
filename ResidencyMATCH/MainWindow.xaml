@@ -314,10 +314,11 @@
             </ControlTemplate.Triggers>
         </ControlTemplate>
         <Style x:Key="ComboBoxStyle1" TargetType="{x:Type ComboBox}">
+            <Setter Property="Text" Value=" -- Select Doctor --"/>
             <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}"/>
             <Setter Property="Background" Value="#FFFFFF"/>
             <Setter Property="BorderBrush" Value="#FFFFFF"/>
-            <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.WindowTextBrushKey}}"/>
+            <Setter Property="Foreground" Value="#000000"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
             <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
@@ -948,7 +949,7 @@
                   ItemsSource="{Binding Doc}" SelectionChanged="cbxDoctorName_SelectionChanged" SelectedItem="DoctorID" DisplayMemberPath="LastName" HorizontalAlignment="Left" 
                   Margin="195,212,0,0" 
                   VerticalAlignment="Top" 
-                  Width="145" Height="35" BorderThickness="0" Cursor="Arrow" IsReadOnly="True" FontFamily="Calibri Light" FontStretch="ExtraExpanded" Style="{DynamicResource ComboBoxStyle1}" >
+                  Width="145" Height="35" BorderThickness="0" Cursor="Arrow" IsReadOnly="True" FontFamily="Calibri Light" FontStretch="ExtraExpanded" Style="{DynamicResource ComboBoxStyle1}">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFFFFF" Offset="0"/>
@@ -972,7 +973,7 @@
 
             </Grid>
         </StackPanel>
-        <TextBlock x:Name="text_title_Copy" 
+        <TextBlock x:Name="resultsCopy" 
             HorizontalAlignment="Center"
             Margin="195,98,88,0" 
             TextWrapping="Wrap"  

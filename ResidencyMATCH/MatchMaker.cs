@@ -39,7 +39,7 @@ namespace ResidencyMATCH
          - recursively run through the program again matchMade = true && if not all the doctorPool.IsMatched are true (if someone had their match taken away)
          */
 
-        public void MakeMatches( List<DoctorPreference> doctorPool, List<HospitalPreference> hospitalPool)
+        public Dictionary<int, ArrayList> MakeMatches( ref List<DoctorPreference> doctorPool, ref List<HospitalPreference> hospitalPool)
         {
             // Tracks how many times this method runs with each match request
             runCount++;
@@ -47,8 +47,9 @@ namespace ResidencyMATCH
 
             // Ensures dictionaries are only initialized on the first run through MatchMaker and not on recursive runs through
             if (runCount == 1)
-                
             {
+                if (hospitalResidentsMatchedDict.Count > 0) return hospitalResidentsMatchedDict;
+
                 // Populates preferredHospitalsDict with doctor's choices of hospitals for residencies 
                 // key = DoctorID value = list of ChoiceHospital1-5
                 foreach (DoctorPreference doctor in doctorPool)
@@ -106,6 +107,7 @@ namespace ResidencyMATCH
                             }
                             else hospitalResidentsMatchedDict.Add(currentHospital.HospitalID, new ArrayList() { doctor.DoctorID });
                             currentHospital.Openings -= 1;
+                            if (currentHospital.Openings == 0) currentHospital.isFullyStaffed = true;
                             matchMade = true;
                             break;
                         }
@@ -147,7 +149,7 @@ namespace ResidencyMATCH
             }
             // Recurses through method to match any Doctors that got bumped and need to be considered for rematch
             if((matchMade = true) && doctorPool.Any(m => !(bool)m.isMatched)){
-                MakeMatches(doctorPool, hospitalPool);
+                MakeMatches(ref doctorPool, ref hospitalPool);
             }
             
             //SaveChanges
@@ -158,11 +160,13 @@ namespace ResidencyMATCH
                 foreach (var match in hospitalResidentsMatchedDict[pair.Key])
                 {
                     Console.WriteLine(match);
+                    
                 }
         
                 Console.WriteLine();
             }
             runCount = 0;
+            return hospitalResidentsMatchedDict;
         }
         
     }
