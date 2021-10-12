@@ -15,6 +15,7 @@ namespace ResidencyMATCH
         public Dictionary<int, List<int>> preferredDoctorsDict = new Dictionary<int, List<int>>();
         public Dictionary<int, ArrayList> hospitalResidentsMatchedDict = new Dictionary<int, ArrayList>();
         private int runCount = 0;
+        private bool matchMade;
 
         /*
         MakeMatches Pseudocode for Implimenting Stable Match Algorithm
@@ -43,7 +44,8 @@ namespace ResidencyMATCH
         {
             // Tracks how many times this method runs with each match request
             runCount++;
-            Console.WriteLine("runCount = " + runCount);
+            matchMade = false;
+            //Console.WriteLine("runCount = " + runCount);
 
             // Ensures dictionaries are only initialized on the first run through MatchMaker and not on recursive runs through
             if (runCount == 1)
@@ -82,7 +84,7 @@ namespace ResidencyMATCH
                     preferredDoctorsDict.Add(hospital.HospitalID, doctorChoices);
                 }
             }
-            bool matchMade = false;
+            
 
             // Loops through attempt match for each doctor
             foreach (DoctorPreference doctor in doctorPool)
@@ -99,7 +101,7 @@ namespace ResidencyMATCH
                         {
                             doctor.isMatched = true;
                             doctor.HospitalMatched = currentHospital.HospitalID;
-                            
+
                             // Adds match to hospitalResidentsMatchedDict & reduces hospital openings by 1
                             if (hospitalResidentsMatchedDict.ContainsKey(currentHospital.HospitalID))
                             {
@@ -142,13 +144,15 @@ namespace ResidencyMATCH
                             bumpedDoctor.isMatched = false;
                             bumpedDoctor.HospitalMatched = null;
                             matchMade = true;
+                            break;
                         }
+                        else matchMade = false;
 
                     }
                 }
             }
             // Recurses through method to match any Doctors that got bumped and need to be considered for rematch
-            if((matchMade = true) && doctorPool.Any(m => !(bool)m.isMatched)){
+            if((matchMade == true) && doctorPool.Any(m => !(bool)m.isMatched)){
                 MakeMatches(ref doctorPool, ref hospitalPool);
             }
             
