@@ -31,16 +31,18 @@ namespace ResidencyMATCH
                             hospital.CurrentOpenings -= 1;
                             matchMade = true;
                             break
-                    -- else if hospitalPool.preferredDoctors includes this doctor && this doctor is preferredDoctors[0]
-                            doctor.IsMatched = true;
-                            doctor.HospitalMatch = hospital.HospitalID;
+                    -- else if hospitalPool.preferredDoctors includes this doctor
+                            check to see if this doctor's rank is higher than lowest ranked doctor already matched
                             remove lowest ranked match for this hospital from hospital.ResidentsMatched 
                                     change that_doctor.IsMatched = false and that_doctor.HospitalMatch = null;
+                            doctor.IsMatched = true;  
+                            doctor.HospitalMatch = hospital.HospitalID;
                             matchMade = true
-         - recursively run through the program again matchMade = true && if not all the doctorPool.IsMatched are true (if someone had their match taken away)
+         - recursively run through the program again if (matchMade = true && if not all the doctorPool.IsMatched are true) 
+           (essentially if someone had their match taken away)
          */
 
-        public Dictionary<int, ArrayList> MakeMatches( ref List<DoctorPreference> doctorPool, ref List<HospitalPreference> hospitalPool)
+        public Dictionary<int, ArrayList> MakeMatches(List<DoctorPreference> doctorPool, List<HospitalPreference> hospitalPool)
         {
             // Tracks how many times this method runs with each match request
             runCount++;
@@ -162,7 +164,7 @@ namespace ResidencyMATCH
             }
             // Recurses through method to match any Doctors that got bumped and need to be considered for rematch
             if((matchMade == true) && doctorPool.Any(m => !(bool)m.isMatched)){
-                MakeMatches(ref doctorPool, ref hospitalPool);
+                MakeMatches(doctorPool, hospitalPool);
             }
             
             //SaveChanges
