@@ -74,10 +74,10 @@ namespace ResidencyMATCH
         //Match button click to load database with changes, calling the UpdateDatabase Method 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
-            
-            btn_match.IsEnabled = true;
-            //DisplayResults();
+
+
+            btn_match.IsEnabled = false;
+           
             
         }
 
@@ -138,14 +138,31 @@ namespace ResidencyMATCH
           
             result.ToList();
 
-            foreach( var item in result)
+            if (result.ToList().Count == 0)
             {
-                txtDocFirstName.Text = item.FirstName;
-                txtDocLastName.Text = item.LastName;
-                txtHospitalName.Text = item.Name;
-                txtHospitalCity.Text = item.City;
-                txtHospitalState.Text = item.State;
+                ResultTitle.Text = "Unfortunately,";
+                ResultText.Text = "You have not been selected for a Residency program at this time.  Please contact your application manager";
+                txtDocFirstName.Text = "";
+                txtDocLastName.Text = "Applicant Name:  " + selectedDoctor.LastName;
+                txtHospitalName.Text = "";
+                txtHospitalCity.Text = "";
+                txtHospitalState.Text = "";
             }
+            else
+            {
+                foreach (var item in result)
+                {
+                    ResultTitle.Text = "Congratulations!";
+                    ResultText.Text = "First and foremost we would like to congratulate you on matching with your hospital. This has been a rigorous process, and your hospital has ranked you as one of their highest preferred applicants from the many other candidates. Expect to hear directly from your matched Residency program soon. ";
+                    txtDocFirstName.Text = item.FirstName;
+                    txtDocLastName.Text = item.LastName;
+                    txtHospitalName.Text = item.Name;
+                    txtHospitalCity.Text = item.City;
+                    txtHospitalState.Text = item.State;
+                }
+            }
+
+            
 
             var allResult = from dp in Context.DoctorPreferences
                          join h in Context.Hospitals on dp.HospitalMatched equals h.HospitalID

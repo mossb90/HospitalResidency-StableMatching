@@ -344,17 +344,29 @@
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Logo">
                 <EasingDoubleKeyFrame KeyTime="0" Value="50.4"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="50.4"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="1.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="51.896"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="52.896"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="51.896"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="52.64"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="50.64"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="52.64"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="51.56"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="7.4"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Logo">
                 <EasingDoubleKeyFrame KeyTime="0" Value="190.8"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="190.8"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="10.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="189.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="189.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="190.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="189.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="189.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="190.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="191.133"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="-9.2"/>
             </DoubleAnimationUsingKeyFrames>
             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
                 <EasingColorKeyFrame KeyTime="0" Value="White"/>
-                <EasingColorKeyFrame KeyTime="0:0:7" Value="#FFAAFAE6"/>
+                <EasingColorKeyFrame KeyTime="0:0:3.5" Value="#FFAAFAE6"/>
             </ColorAnimationUsingKeyFrames>
             <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="ellipse">
                 <EasingPointKeyFrame KeyTime="0" Value="0.555,0.551"/>
@@ -365,92 +377,87 @@
                 <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.5"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0.2"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0.8"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0.2"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="1"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0.1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="0.8"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="0.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:4.5" Value="0.2"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="0.8"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0.8"/>
             </DoubleAnimationUsingKeyFrames>
             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="MainBackground">
-                <EasingColorKeyFrame KeyTime="0:0:10" Value="#FFAAFAE6"/>
+                <EasingColorKeyFrame KeyTime="0:0:5" Value="#FFAAFAE6"/>
             </ColorAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MainBackground">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:7">
+                <DiscreteObjectKeyFrame KeyTime="0:0:3.5">
                     <DiscreteObjectKeyFrame.Value>
                         <Visibility>Visible</Visibility>
                     </DiscreteObjectKeyFrame.Value>
                 </DiscreteObjectKeyFrame>
-                <DiscreteObjectKeyFrame KeyTime="0:0:10" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="MainBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="0.181"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="0.181"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="MainBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="0.306"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="0.306"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MainBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="-214.2"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="-214.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="MainBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="50.4"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="50.4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Rectangle.RadiusX)" Storyboard.TargetName="MainBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="100"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="100"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="20"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Rectangle.RadiusY)" Storyboard.TargetName="MainBackground">
                 <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="100"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="100"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="20"/>
             </DoubleAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ellipse">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:7" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:3.5" Value="{x:Static Visibility.Hidden}"/>
             </ObjectAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MainTitle">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:5.5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MainText">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:5.5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btn_match">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:5.5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="cbxDoctorName">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:5.5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ComboBox_Label">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:5.5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="rectangle">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:5.5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ComboBox_Label_Copy">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:5.5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="Logo">
+                <EasingPointKeyFrame KeyTime="0:0:5" Value="0.516,0.53"/>
+            </PointAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="OnDoubleClick">
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Doctor_Result_Container">
@@ -519,6 +526,10 @@
     </Window.Triggers>
 
     <Grid x:Name="MainWindow1" MinWidth="1200" MinHeight="500" MaxWidth="1200" MaxHeight="500" Margin="0,0,0,-0.4" HorizontalAlignment="Center" Width="1200">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="791*"/>
+            <ColumnDefinition Width="409*"/>
+        </Grid.ColumnDefinitions>
 
 
 
@@ -531,7 +542,7 @@
                    Height="450" Stroke="Black" 
                    VerticalAlignment="Top" 
                    Width="775" RadiusX="20" RadiusY="20" 
-                   StrokeThickness="0" Margin="395,10,0,0" RenderTransformOrigin="0.5,0.5" >
+                   StrokeThickness="0" Margin="395,10,0,0" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" >
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -546,7 +557,7 @@
         </Rectangle>
         <TextBlock x:Name="MainTitle" 
                      HorizontalAlignment="Center"
-                     Margin="425,159,582,0" 
+                     Margin="425,159,173,0" 
                      TextWrapping="Wrap"  
                      VerticalAlignment="Top" 
                      Height="30" Width="193" 
@@ -556,7 +567,7 @@
 
         <TextBlock x:Name="MainText" 
             HorizontalAlignment="Center"
-            Margin="425,194,582,0" 
+            Margin="425,194,173,0" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
             Height="181" Width="193" 
@@ -567,11 +578,11 @@
                   Margin="788,167,0,0" 
                   VerticalAlignment="Top"
                   Width="157" Height="35"
-                  Click="Button_Click" FontFamily="Calibri Light" BorderThickness="0" Background="#FFFFFDFD"  />
+                  Click="Button_Click" FontFamily="Calibri Light" BorderThickness="0" Background="#FFFFFDFD" Grid.ColumnSpan="2"  />
         <ComboBox x:Name="cbxDoctorName" 
                     ItemsSource="{Binding Doc}" SelectionChanged="cbxDoctorName_SelectionChanged" SelectedItem="DoctorID" DisplayMemberPath="LastName" HorizontalAlignment="Left" 
                     VerticalAlignment="Top" 
-                    Width="157" Height="35" BorderThickness="0" Cursor="Arrow" IsReadOnly="True" FontFamily="Calibri Light" FontStretch="ExtraExpanded" Style="{DynamicResource ComboBoxStyle1}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="788,106,0,0">
+                    Width="157" Height="35" BorderThickness="0" Cursor="Arrow" IsReadOnly="True" FontFamily="Calibri Light" FontStretch="ExtraExpanded" Style="{DynamicResource ComboBoxStyle1}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="788,106,0,0" Grid.ColumnSpan="2">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFFFFF" Offset="0"/>
@@ -585,7 +596,7 @@
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
             Height="25" Width="157" 
-            FontFamily="Calibri Light" TextAlignment="Center"><Run Text="SELECT DOCTOR NAME "/></TextBlock>
+            FontFamily="Calibri Light" TextAlignment="Center" Grid.ColumnSpan="2"><Run Text="SELECT DOCTOR NAME "/></TextBlock>
         <Rectangle x:Name="rectangle" Fill="White" HorizontalAlignment="Left" Height="223" Margin="677,43,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="2"/>
         <Ellipse x:Name="ellipse" Fill="White" HorizontalAlignment="Left" Height="201" Margin="-282,88,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.5,0.5">
             <Ellipse.RenderTransform>
@@ -607,7 +618,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Rectangle x:Name="Doctor_Result_Container" Fill="White" HorizontalAlignment="Left" Height="209" Margin="730,291,0,0" RadiusY="10" RadiusX="10" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="460" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+        <Rectangle x:Name="Doctor_Result_Container" Fill="White" HorizontalAlignment="Left" Height="209" Margin="730,291,0,0" RadiusY="10" RadiusX="10" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="460" RenderTransformOrigin="0.5,0.5" Visibility="Hidden" Grid.ColumnSpan="2">
             <Rectangle.Effect>
                 <DropShadowEffect BlurRadius="10" Opacity="0.2"/>
             </Rectangle.Effect>
@@ -621,6 +632,9 @@
             </Rectangle.RenderTransform>
         </Rectangle>
         <DataGrid x:Name="grdAllResults" ItemsSource="{Binding}" 
+                    ScrollViewer.CanContentScroll="True" 
+                    ScrollViewer.VerticalScrollBarVisibility="Auto"
+                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
                   HorizontalAlignment="Left" Height="450" Margin="10,10,0,0" 
                   VerticalAlignment="Top" Width="362" IsHitTestVisible="False"
                   FontFamily="Calibri Light" BorderThickness="0" AllowDrop="True" GridLinesVisibility="None" AutoGenerateColumns="True" Background="White" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
@@ -633,7 +647,7 @@
                 </TransformGroup>
             </DataGrid.RenderTransform>
         </DataGrid>
-        <StackPanel x:Name="stackPanel" Margin="952,335,30,24.4" Orientation="Vertical" RenderTransformOrigin="0.502,0.497" Visibility="Hidden">
+        <StackPanel x:Name="stackPanel" Margin="161,335,30,24.8" Orientation="Vertical" RenderTransformOrigin="0.502,0.497" Visibility="Hidden" Grid.Column="1">
 
             <TextBox x:Name="txtDocFirstName" 
                 HorizontalAlignment="Left"
@@ -727,7 +741,7 @@
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
             Height="30" Width="145" 
-            Text="CONGRATULATIONS" FontFamily="Impact" FontSize="18" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
+            Text="CONGRATULATIONS" FontFamily="Impact" FontSize="18" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -743,10 +757,10 @@
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
             Height="111.8" Width="145" 
-            Text="First and foremost we would like to congratulate you on matching with your hospital. This has been a rigorous process, and your hospital has ranked you as one of their highest preferred applicants from the many other candidates. the right, additional information can be found in your application list. " FontFamily="Calibri Light" FontWeight="Bold" FontSize="10" Visibility="Hidden"/>
+            Text="First and foremost we would like to congratulate you on matching with your hospital. This has been a rigorous process, and your hospital has ranked you as one of their highest preferred applicants from the many other candidates. Expect to hear directly from your matched Residency program soon. " FontFamily="Calibri Light" FontWeight="Bold" FontSize="10" Visibility="Hidden" Grid.ColumnSpan="2"/>
         <TextBlock x:Name="ComboBox_Label_Copy" 
             HorizontalAlignment="Center"
-            Margin="425,409.8,582,0" 
+            Margin="425,409.8,173,0" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
             Height="25" Width="193" 
