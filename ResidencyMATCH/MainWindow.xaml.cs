@@ -48,9 +48,9 @@ namespace ResidencyMATCH
             }
 
             //Loads dictionaries and calls the MakeMatches method on window load 
-            Dictionary<int, ArrayList> hospitalResidentsMatchDict = match.MakeMatches(ref doctorPool, ref hospitalPool);
+            Dictionary<int, ArrayList> hospitalResidentsMatchDict = match.MakeMatches( doctorPool,  hospitalPool);
             UpdateDatabase();
-            DisplayResults();
+            //DisplayResults();
 
 
         }
@@ -65,20 +65,20 @@ namespace ResidencyMATCH
         //combo box selection change to link chosen doctor to hospital/doctor information to the output screen 
         private void cbxDoctorName_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-          
 
-            var selectedDoctor = cbxDoctorName.SelectedItem as Doctor;
 
-            MessageBox.Show(selectedDoctor.DoctorID.ToString());
+            DisplayResults();
+
         }
 
         //Match button click to load database with changes, calling the UpdateDatabase Method 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            
+            
+            btn_match.IsEnabled = true;
             //DisplayResults();
             
-            btn_match.IsEnabled = false;
-
         }
 
         //Update database on doctor matches
@@ -105,6 +105,7 @@ namespace ResidencyMATCH
            
             Context.SaveChanges();
         }
+
         public void ResetDatabase()
         {
             //var matched = Context.DoctorPreferences.First();
@@ -124,37 +125,41 @@ namespace ResidencyMATCH
         //Query to combine all doctor/hospital match results... Hospitals + Hospital preferences + Doctor Preferences + Doctor 
         public void DisplayResults()
         {
-           var dataResults = Context.Hospitals.Join(Context.HospitalPreferences, h => h.HospitalID, hp => hp.HospitalID, (h, hp) => new
-            {
-                HospitalName = h.Name,
-                HospitalCity = h.City,
-                HospitalState = h.State,
-                HospitalID = h.HospitalID,
+          
 
-            }
-            )
-            .Join(Context.DoctorPreferences, hc => hc.HospitalID, m => m.HospitalMatched, (hc, m) => new
-            {
-                SelectedDoctor = m.HospitalMatched,
-                DoctorID = m.DoctorID,
-            }
-            )
-            .Join(Context.Doctors, d => d.DoctorID, sd => sd.DoctorID, (d, sd) => new
-            {
-                FirstName = sd.FirstName,
-                LastName = sd.LastName,
-                AlmaMater = sd.AlmaMater,
-             
-            }
-            )
-            .ToList();
+            var selectedDoctor = cbxDoctorName.SelectedItem as Doctor;
+        
+            var result = from dp in Context.DoctorPreferences
+                          join h in Context.Hospitals on dp.HospitalMatched equals h.HospitalID
+                          join d in Context.Doctors on dp.DoctorID equals d.DoctorID
+                          where d.DoctorID == selectedDoctor.DoctorID
+                         select new { d.FirstName, d.LastName, h.HospitalID, h.Name, h.City, h.State };
 
-            foreach (var item in dataResults)
-            {
+          
+            result.ToList();
 
-                //TODO >>>> Cant print out individual item lists 
-                text_results.Text = text_results.Text + item.FirstName;
+            foreach( var item in result)
+            {
+                txtDocFirstName.Text = item.FirstName;
+                txtDocLastName.Text = item.LastName;
+                txtHospitalName.Text = item.Name;
+                txtHospitalCity.Text = item.City;
+                txtHospitalState.Text = item.State;
             }
+
+            var allResult = from dp in Context.DoctorPreferences
+                         join h in Context.Hospitals on dp.HospitalMatched equals h.HospitalID
+                         join d in Context.Doctors on dp.DoctorID equals d.DoctorID
+                         select new { FirstName = d.FirstName, LastName = d.LastName, Hospital = h.Name, City = h.City, State = h.State };
+
+            var results = allResult.ToList();
+            grdAllResults.ItemsSource = results;
+            
+
+
+
+
+
         }
         #region Unused controls 
 

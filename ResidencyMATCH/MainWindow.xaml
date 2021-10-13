@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ResidencyMATCH"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="ResidencyMATCH.MainWindow"
         mc:Ignorable="d"
-        Title="Hospital Resident Assignments by Stable Matching" Height="450" Width="800" Background="{x:Null}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" >
+        Title="Hospital Resident Assignments by Stable Matching" Height="500" Width="1200" Background="{x:Null}" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None" AllowsTransparency="True" >
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -34,7 +34,7 @@
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Padding" Value="2"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
@@ -211,7 +211,7 @@
                         <Border x:Name="dropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
                             <ScrollViewer x:Name="DropDownScrollViewer">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
-                                    <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                    <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Center" Width="0">
                                         <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
                                     </Canvas>
                                     <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
@@ -225,7 +225,7 @@
             </Grid>
             <ControlTemplate.Triggers>
                 <Trigger Property="HasDropShadow" SourceName="PART_Popup" Value="true">
-                    <Setter Property="Margin" TargetName="shadow" Value="0,0,5,5"/>
+                    <Setter Property="Margin" TargetName="shadow" Value="0,0,0,0"/>
                     <Setter Property="Color" TargetName="shadow" Value="#71000000"/>
                 </Trigger>
                 <Trigger Property="HasItems" Value="false">
@@ -272,7 +272,7 @@
                         <Border x:Name="dropDownBorder" BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}" BorderThickness="1" Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}">
                             <ScrollViewer x:Name="DropDownScrollViewer">
                                 <Grid x:Name="grid" RenderOptions.ClearTypeHint="Enabled">
-                                    <Canvas x:Name="canvas" HorizontalAlignment="Left" Height="0" VerticalAlignment="Top" Width="0">
+                                    <Canvas x:Name="canvas" HorizontalAlignment="Center" Height="0" VerticalAlignment="Top" Width="0">
                                         <Rectangle x:Name="opaqueRect" Fill="{Binding Background, ElementName=dropDownBorder}" Height="{Binding ActualHeight, ElementName=dropDownBorder}" Width="{Binding ActualWidth, ElementName=dropDownBorder}"/>
                                     </Canvas>
                                     <ItemsPresenter x:Name="ItemsPresenter" KeyboardNavigation.DirectionalNavigation="Contained" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
@@ -335,621 +335,243 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-        <Storyboard x:Key="MatchResultAnimation">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="rectangle">
-                <EasingDoubleKeyFrame KeyTime="0" Value="2.652"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="7.951"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="13.456"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="15.245"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="16.828"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="rectangle">
-                <EasingDoubleKeyFrame KeyTime="0" Value="2.71"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="4.82"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.6" Value="5.111"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle">
-                <EasingDoubleKeyFrame KeyTime="0" Value="-31.487"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-132.507"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-237.463"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-271.574"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rectangle">
-                <EasingDoubleKeyFrame KeyTime="0" Value="-30.831"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="-68.878"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="-74.126"/>
-            </DoubleAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="text_title_Copy2">
-                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Visible}"/>
-            </ObjectAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="text_title_Copy3">
-                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Visible}"/>
-            </ObjectAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="text_results">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Visible}"/>
-            </ObjectAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_title_Copy2">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="87.901"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_title_Copy2">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_title_Copy3">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="87.901"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_title_Copy3">
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1.312"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="7.872"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="17.055"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="48.542"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="17.055"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="49.854"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="18.367"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="52.478"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="19.679"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="55.102"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="22.303"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60.35"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="24.927"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="62.974"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="26.239"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="68.222"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="28.863"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="73.469"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="32.799"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="85.277"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="38.047"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="97.085"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="41.983"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="112.828"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="45.918"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="132.507"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="52.478"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="146.939"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="57.726"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="167.93"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="62.974"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="187.609"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="66.91"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="226.968"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="102.332"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="216.472"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="104.956"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="198.105"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="104.956"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="199.417"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="104.956"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="200.729"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="104.956"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="212.536"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="101.02"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="225.656"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="99.708"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="232.216"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="237.464"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="247.959"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="250.583"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="254.519"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="258.455"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="262.391"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="266.327"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="268.951"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="101.02"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="276.822"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="101.02"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="278.134"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="101.02"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="284.694"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="101.02"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="289.942"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="101.02"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="293.878"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="101.02"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="299.126"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="101.02"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="293.878"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="278.134"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="272.887"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="267.639"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="98.396"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="259.767"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="98.396"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="261.079"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="98.396"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="265.015"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="102.332"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="267.639"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="102.332"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="270.263"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="102.332"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="103.644"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="103.644"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="272.887"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="103.644"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="274.199"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="103.644"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="275.51"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="103.644"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="276.822"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="103.644"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="279.446"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="103.644"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="278.134"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="104.956"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="278.134"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="104.956"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="276.822"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="106.268"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="275.51"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="106.268"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="274.199"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="107.58"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="274.199"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="108.892"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="272.887"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="110.204"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="272.887"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="104.956"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="268.951"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="103.644"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="268.951"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="99.708"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="267.639"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="98.396"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="267.639"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="98.396"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="268.951"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="98.396"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="270.263"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="98.396"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="98.396"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="111.516"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="274.199"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="112.828"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="274.199"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="120.7"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="274.199"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="102.333"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="73.47"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="60.35"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="55.102"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="49.855"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="70.846"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="275.511"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="73.47"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="275.511"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="74.782"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="275.511"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="81.341"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="85.277"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="270.263"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="86.589"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="270.263"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="87.901"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="270.263"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="87.901"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="271.575"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="144.315"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="270.263"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="166.618"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="270.263"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="166.618"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="270.263"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="161.37"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="153.498"/>
-            </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="text_results">
-                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="153.498"/>
-            </DoubleAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="text_results">
-                <DiscreteObjectKeyFrame KeyTime="0:0:0.5" Value="{x:Static Visibility.Hidden}"/>
-            </ObjectAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="text_results">
-                <DiscreteObjectKeyFrame KeyTime="0:0:1" Value="{x:Static Visibility.Visible}"/>
-            </ObjectAnimationUsingKeyFrames>
-            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="rectangle1">
-                <EasingColorKeyFrame KeyTime="0:0:1" Value="#FF8BE4E2"/>
+        <Storyboard x:Key="OpenWindow">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0" Value="747.6"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ellipse">
+                <EasingDoubleKeyFrame KeyTime="0" Value="97.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Logo">
+                <EasingDoubleKeyFrame KeyTime="0" Value="50.4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="50.4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Logo">
+                <EasingDoubleKeyFrame KeyTime="0" Value="190.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="190.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="10.8"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
+                <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                <EasingColorKeyFrame KeyTime="0:0:7" Value="#FFAAFAE6"/>
             </ColorAnimationUsingKeyFrames>
+            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="ellipse">
+                <EasingPointKeyFrame KeyTime="0" Value="0.555,0.551"/>
+            </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Logo">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.2" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="0.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.5" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0.1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:4.5" Value="0.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="MainBackground">
+                <EasingColorKeyFrame KeyTime="0:0:10" Value="#FFAAFAE6"/>
+            </ColorAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MainBackground">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:7">
+                    <DiscreteObjectKeyFrame.Value>
+                        <Visibility>Visible</Visibility>
+                    </DiscreteObjectKeyFrame.Value>
+                </DiscreteObjectKeyFrame>
+                <DiscreteObjectKeyFrame KeyTime="0:0:10" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="MainBackground">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="0.181"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="MainBackground">
+                <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="0.306"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MainBackground">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="-214.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="MainBackground">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="50.4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Rectangle.RadiusX)" Storyboard.TargetName="MainBackground">
+                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="100"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="20"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(Rectangle.RadiusY)" Storyboard.TargetName="MainBackground">
+                <EasingDoubleKeyFrame KeyTime="0" Value="20"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:7" Value="100"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:10" Value="20"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ellipse">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:7" Value="{x:Static Visibility.Hidden}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MainTitle">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="MainText">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btn_match">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="cbxDoctorName">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ComboBox_Label">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="rectangle">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ComboBox_Label_Copy">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:11" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
+        <Storyboard x:Key="OnDoubleClick">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Doctor_Result_Container">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Doctor_Result_Container">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.084"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.084"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1.073"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Doctor_Result_Container">
+                <EasingDoubleKeyFrame KeyTime="0" Value="210.6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="210.6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="-16.8"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Doctor_Result_Container">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.403"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.954"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Doctor_Result_Container">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-62.4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-4.8"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="stackPanel">
+                <DiscreteObjectKeyFrame KeyTime="0:0:3" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ResultTitle">
+                <DiscreteObjectKeyFrame KeyTime="0:0:3" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ResultText">
+                <DiscreteObjectKeyFrame KeyTime="0:0:3" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="ResultTitle">
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="-22.8"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="ResultTitle">
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1.2"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="AllResults">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grdAllResults">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+                <DiscreteObjectKeyFrame KeyTime="0:0:2" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grdAllResults">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.075"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="grdAllResults">
+                <EasingDoubleKeyFrame KeyTime="0" Value="208.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="Control.MouseDoubleClick">
-            <BeginStoryboard x:Name="MatchResultAnimation_BeginStoryboard" Storyboard="{StaticResource MatchResultAnimation}"/>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard x:Name="OpenWindow_BeginStoryboard" Storyboard="{StaticResource OpenWindow}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="UIElement.KeyUp">
+            <BeginStoryboard x:Name="OnDoubleClick_BeginStoryboard" Storyboard="{StaticResource AllResults}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Button.Click" SourceName="btn_match">
+            <BeginStoryboard x:Name="OnDoubleClick_BeginStoryboard1" Storyboard="{StaticResource OnDoubleClick}"/>
         </EventTrigger>
     </Window.Triggers>
-    <Grid x:Name="MainWindow1" Width="800" Height="450" MinWidth="800" MinHeight="450" MaxWidth="800" MaxHeight="450">
 
-        <RadioButton x:Name="btn_radioByDoctor" 
-                     Content="Sort by Doctor" 
-                     HorizontalAlignment="Left" 
-                     Margin="47,21,0,0" 
-                     VerticalAlignment="Top" 
-                     Width="105" Height="22" 
-                     RenderTransformOrigin="0.539,1.518" 
-                     Checked="btn_radioByDoctor_Checked" d:IsHidden="True" Grid.ColumnSpan="2"/>
-        <RadioButton x:Name="btn_radioByHospital" 
-                     Content="Sort by Hospital&#xA;" 
-                     HorizontalAlignment="Left" Margin="48,48,0,0" 
-                     VerticalAlignment="Top" 
-                     Checked="btn_radioByHospital_Checked" Height="31" Width="104" d:IsHidden="True" Grid.ColumnSpan="2"/>
+    <Grid x:Name="MainWindow1" MinWidth="1200" MinHeight="500" MaxWidth="1200" MaxHeight="500" Margin="0,0,0,-0.4" HorizontalAlignment="Center" Width="1200">
 
 
 
 
 
-        <Rectangle x:Name="rectangle1" Fill="#FFA9FAE7" 
+
+
+        <Rectangle x:Name="MainBackground" Fill="#FFA9FAE7" 
                    HorizontalAlignment="Left" 
                    Height="450" Stroke="Black" 
                    VerticalAlignment="Top" 
-                   Width="775" RadiusX="15" RadiusY="15" 
-                   StrokeThickness="0"/>
+                   Width="775" RadiusX="20" RadiusY="20" 
+                   StrokeThickness="0" Margin="395,10,0,0" RenderTransformOrigin="0.5,0.5" >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Effect>
+                <DropShadowEffect Opacity="0.2" RenderingBias="Quality" ShadowDepth="10" BlurRadius="20"/>
+            </Rectangle.Effect>
+        </Rectangle>
+        <TextBlock x:Name="MainTitle" 
+                     HorizontalAlignment="Center"
+                     Margin="425,159,582,0" 
+                     TextWrapping="Wrap"  
+                     VerticalAlignment="Top" 
+                     Height="30" Width="193" 
+                     Text="RESIDENCY MATCHES " FontFamily="Impact" FontSize="22" TextAlignment="Center"/>
 
+
+
+        <TextBlock x:Name="MainText" 
+            HorizontalAlignment="Center"
+            Margin="425,194,582,0" 
+            TextWrapping="Wrap"  
+            VerticalAlignment="Top" 
+            Height="181" Width="193" 
+            Text="The stable match algorithm utilizes a preferences list from both resident applicants and hospitals. Prior to this step each resident applicant has completed a rigorous screening process from various hospitals. Their preferences are ranked ordered and have been loaded into a database with their additional information.  Similarly hospitals have determined their preferred residents post application and interview, and have loaded their ranked lists to the database. Utilizing a stable match algorithm each doctor will be matched to their hospitals based on prioritized rank. More details on how the algorithm is used can be found on the help page. " FontFamily="Calibri Light" FontWeight="Bold" FontSize="10" TextAlignment="Center"/>
         <Button x:Name="btn_match" 
-                  Content="Make Matches" 
+                  Content="MATCH" 
                   HorizontalAlignment="Left" 
-                  Margin="376,212,0,0" 
+                  Margin="788,167,0,0" 
                   VerticalAlignment="Top"
                   Width="157" Height="35"
-                  Click="Button_Click" FontFamily="Calibri Light" FontWeight="Bold" BorderThickness="0" Background="White" Style="{DynamicResource RoundeButtonStyle}">
-            <Button.Effect>
-                <DropShadowEffect BlurRadius="0" Opacity="0" Direction="0" ShadowDepth="0" RenderingBias="Quality"/>
-            </Button.Effect>
-        </Button>
-
+                  Click="Button_Click" FontFamily="Calibri Light" BorderThickness="0" Background="#FFFFFDFD"  />
         <ComboBox x:Name="cbxDoctorName" 
-                  ItemsSource="{Binding Doc}" SelectionChanged="cbxDoctorName_SelectionChanged" SelectedItem="DoctorID" DisplayMemberPath="LastName" HorizontalAlignment="Left" 
-                  Margin="195,212,0,0" 
-                  VerticalAlignment="Top" 
-                  Width="145" Height="35" BorderThickness="0" Cursor="Arrow" IsReadOnly="True" FontFamily="Calibri Light" FontStretch="ExtraExpanded" Style="{DynamicResource ComboBoxStyle1}">
+                    ItemsSource="{Binding Doc}" SelectionChanged="cbxDoctorName_SelectionChanged" SelectedItem="DoctorID" DisplayMemberPath="LastName" HorizontalAlignment="Left" 
+                    VerticalAlignment="Top" 
+                    Width="157" Height="35" BorderThickness="0" Cursor="Arrow" IsReadOnly="True" FontFamily="Calibri Light" FontStretch="ExtraExpanded" Style="{DynamicResource ComboBoxStyle1}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="788,106,0,0">
             <ComboBox.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFFFFF" Offset="0"/>
@@ -957,37 +579,38 @@
                 </LinearGradientBrush>
             </ComboBox.Background>
         </ComboBox>
-        <TextBlock x:Name="text_title" 
-                     HorizontalAlignment="Center"
-                     Margin="195,68,296,0" 
-                     TextWrapping="Wrap"  
-                     VerticalAlignment="Top" 
-                     Height="30" Width="309" 
-                     Text="HOSPITAL RESIDENCY MATCHES " FontFamily="Calibri" FontWeight="Bold" FontSize="22"/>
-
-        <StackPanel HorizontalAlignment="Left" Height="429" VerticalAlignment="Top" Width="152" Margin="0,21,0,0">
-
-
-            <Grid Height="103" Margin="0,0,151,0">
-                <Image HorizontalAlignment="Left" Height="134" Margin="13,23,-142,-54" VerticalAlignment="Top" Width="129" Source="Finding the perfect Logo.png"/>
-
-            </Grid>
-        </StackPanel>
-        <TextBlock x:Name="resultsCopy" 
+        <TextBlock x:Name="ComboBox_Label" 
             HorizontalAlignment="Center"
-            Margin="195,98,88,0" 
+            Margin="788,76,255,0" 
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
-            Height="69" Width="517" 
-            Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem." FontFamily="Calibri Light" FontWeight="Bold" FontSize="10"/>
-        <TextBlock x:Name="text_title_Copy1" 
-            HorizontalAlignment="Center"
-            Margin="195,191,460,0" 
-            TextWrapping="Wrap"  
-            VerticalAlignment="Top" 
-            Height="30" Width="145" 
-            Text="DOCTOR'S NAMES " FontFamily="Calibri"/>
-        <Rectangle x:Name="rectangle" Fill="White" HorizontalAlignment="Left" Height="36.061" Margin="736.872,413.939,0,0" RadiusY="5" RadiusX="1" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="38.128" RenderTransformOrigin="0.5,0.5">
+            Height="25" Width="157" 
+            FontFamily="Calibri Light" TextAlignment="Center"><Run Text="SELECT DOCTOR NAME "/></TextBlock>
+        <Rectangle x:Name="rectangle" Fill="White" HorizontalAlignment="Left" Height="223" Margin="677,43,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="2"/>
+        <Ellipse x:Name="ellipse" Fill="White" HorizontalAlignment="Left" Height="201" Margin="-282,88,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.5,0.5">
+            <Ellipse.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Ellipse.RenderTransform>
+        </Ellipse>
+        <Image x:Name="Logo" HorizontalAlignment="Left" Height="134" Margin="448,25,0,0" VerticalAlignment="Top" Width="129" Source="Finding the perfect Logo.png" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Rectangle x:Name="Doctor_Result_Container" Fill="White" HorizontalAlignment="Left" Height="209" Margin="730,291,0,0" RadiusY="10" RadiusX="10" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="460" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
+            <Rectangle.Effect>
+                <DropShadowEffect BlurRadius="10" Opacity="0.2"/>
+            </Rectangle.Effect>
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -997,15 +620,114 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
+        <DataGrid x:Name="grdAllResults" ItemsSource="{Binding}" 
+                  HorizontalAlignment="Left" Height="450" Margin="10,10,0,0" 
+                  VerticalAlignment="Top" Width="362" IsHitTestVisible="False"
+                  FontFamily="Calibri Light" BorderThickness="0" AllowDrop="True" GridLinesVisibility="None" AutoGenerateColumns="True" Background="White" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+        </DataGrid>
+        <StackPanel x:Name="stackPanel" Margin="952,335,30,24.4" Orientation="Vertical" RenderTransformOrigin="0.502,0.497" Visibility="Hidden">
 
-
-        <TextBlock x:Name="text_title_Copy2" 
-                HorizontalAlignment="Center"
-                Margin="12,13,284,0" 
-                TextWrapping="Wrap"  
+            <TextBox x:Name="txtDocFirstName" 
+                HorizontalAlignment="Left"
+                Height="27" 
+                TextWrapping="Wrap" 
+                Text="First Name" 
                 VerticalAlignment="Top" 
-                Height="30" Width="309" 
-                Text="CONGRATULATIONS!" FontFamily="Calibri" FontWeight="Bold" FontSize="22" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
+                Width="284" 
+                TextChanged="text_results_TextChanged" FontFamily="Calibri Light" BorderThickness="0" RenderTransformOrigin="0.5,0.5" >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBox x:Name="txtDocLastName" 
+                HorizontalAlignment="Left"
+                Height="27" 
+                TextWrapping="Wrap" 
+                Text="Last Name" 
+                VerticalAlignment="Top" 
+                Width="284" 
+                TextChanged="text_results_TextChanged" FontFamily="Calibri Light" BorderThickness="0" RenderTransformOrigin="0.5,0.5" >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBox x:Name="txtHospitalName" 
+                HorizontalAlignment="Left"
+                Height="27" 
+                TextWrapping="Wrap" 
+                Text="Hospital Name " 
+                VerticalAlignment="Top" 
+                Width="284" 
+                TextChanged="text_results_TextChanged" FontFamily="Calibri Light" BorderThickness="0" RenderTransformOrigin="0.5,0.5" >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBox x:Name="txtHospitalCity" 
+                HorizontalAlignment="Left"
+                Height="27" 
+                TextWrapping="Wrap" 
+                Text="City" 
+                VerticalAlignment="Top" 
+                Width="284" 
+                TextChanged="text_results_TextChanged" FontFamily="Calibri Light" BorderThickness="0" RenderTransformOrigin="0.5,0.5" >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBox x:Name="txtHospitalState" 
+                HorizontalAlignment="Left"
+                Height="22" 
+                TextWrapping="Wrap" 
+                Text="State" 
+                VerticalAlignment="Top" 
+                Width="284" 
+                TextChanged="text_results_TextChanged" FontFamily="Calibri Light" BorderThickness="0" RenderTransformOrigin="0.5,0.5" >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+        </StackPanel>
+        <TextBlock x:Name="ResultTitle" 
+            HorizontalAlignment="Center"
+            Margin="757.6,347.4,297.4,0" 
+            TextWrapping="Wrap"  
+            VerticalAlignment="Top" 
+            Height="30" Width="145" 
+            Text="CONGRATULATIONS" FontFamily="Impact" FontSize="18" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
             <TextBlock.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -1015,40 +737,20 @@
                 </TransformGroup>
             </TextBlock.RenderTransform>
         </TextBlock>
-        <TextBlock x:Name="text_title_Copy3" 
-                HorizontalAlignment="Center"
-                Margin="12,43,401,0" 
-                TextWrapping="Wrap"  
-                VerticalAlignment="Top" 
-                Height="111" Width="192" 
-                FontFamily="Calibri Light" FontWeight="Bold" FontSize="10" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform><Run Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et "/><Run Text="Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et "/><LineBreak/><Run/></TextBlock>
-
-        <TextBox x:Name="text_results" 
-                HorizontalAlignment="Left"
-                Height="84" 
-                Margin="280,48,0,0" 
-                TextWrapping="Wrap" 
-                Text="Match Results " 
-                VerticalAlignment="Top" 
-                Width="300" 
-                TextChanged="text_results_TextChanged" FontFamily="Calibri" BorderThickness="0" Visibility="Hidden" RenderTransformOrigin="0.5,0.5" >
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
+        <TextBlock x:Name="ResultText" 
+            HorizontalAlignment="Center"
+            Margin="760,348.2,295,0" 
+            TextWrapping="Wrap"  
+            VerticalAlignment="Top" 
+            Height="111.8" Width="145" 
+            Text="First and foremost we would like to congratulate you on matching with your hospital. This has been a rigorous process, and your hospital has ranked you as one of their highest preferred applicants from the many other candidates. the right, additional information can be found in your application list. " FontFamily="Calibri Light" FontWeight="Bold" FontSize="10" Visibility="Hidden"/>
+        <TextBlock x:Name="ComboBox_Label_Copy" 
+            HorizontalAlignment="Center"
+            Margin="425,409.8,582,0" 
+            TextWrapping="Wrap"  
+            VerticalAlignment="Top" 
+            Height="25" Width="193" 
+            FontFamily="Calibri Light" Text="USE THE KEY UP BUTTON ON YOUR KEYBOARD TO SHOW ALL RESULTS  " FontSize="8" TextAlignment="Center" RenderTransformOrigin="0.6,0.532"/>
 
 
 
