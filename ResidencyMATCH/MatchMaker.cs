@@ -113,16 +113,15 @@ namespace ResidencyMATCH
                             matchMade = true;
                             break;
                         }
-                        // Manages a match if there are no openings left but Doctor is hospital's top pick.  In that case
-                        // the lowest ranked Doctor already matched to that hospital will get bumped and will be put pack into
-                        // the pool of doctors that have to be matched
-                        else if (preferredDoctorsDict[hospitalChoice].Contains(doctor.DoctorID) && (preferredDoctorsDict[hospitalChoice][0] == doctor.DoctorID))
-                        {
-                            doctor.isMatched = true;
-                            doctor.HospitalMatched = currentHospital.HospitalID;
+                        // Manages a match if there are no openings left but Doctor is ranked higher than another Doctor tentatively matched.
+                        // to that hospital.  In that case the lowest ranked Doctor already matched to that hospital will get bumped and will
+                        // be put pack int the pool of doctors that have to be matched
+                        else if (preferredDoctorsDict[hospitalChoice].Contains(doctor.DoctorID) )
+                        {                            
                             int lowestRankDoctorIDIndex = -1;    // Index of lowest ranked doctor already matched that will get bumped
 
-                            // Determines lowest ranked Doctor of those already matched at for this hospital and removes their match
+                            // Determines lowest ranked Doctor of those already matched at for this hospital and determines if the current
+                            // doctor has a higher rank
                             foreach (int alreadyMatched in hospitalResidentsMatchedDict[currentHospital.HospitalID])
                             {
                                 if (preferredDoctorsDict[hospitalChoice].IndexOf(alreadyMatched) > lowestRankDoctorIDIndex)
@@ -130,21 +129,31 @@ namespace ResidencyMATCH
                                     lowestRankDoctorIDIndex = preferredDoctorsDict[hospitalChoice].IndexOf(alreadyMatched);
                                 }
                             }
-                            hospitalResidentsMatchedDict[currentHospital.HospitalID].Remove(preferredDoctorsDict[hospitalChoice][lowestRankDoctorIDIndex]);
-
-                            // Adds new match to hospitalResidentsMatchedDict & reduces hospital openings by 1
-                            if (hospitalResidentsMatchedDict.ContainsKey(currentHospital.HospitalID))
+                            if (lowestRankDoctorIDIndex > preferredDoctorsDict[hospitalChoice].IndexOf(doctor.DoctorID))
                             {
-                                hospitalResidentsMatchedDict[currentHospital.HospitalID].Add(doctor.DoctorID);
-                            }
-                            else hospitalResidentsMatchedDict.Add(currentHospital.HospitalID, new ArrayList() { doctor.DoctorID });
+                                // Removes lowest ranking Doctor from the hospitalResidentsMatchedDict
+                                hospitalResidentsMatchedDict[currentHospital.HospitalID].Remove(preferredDoctorsDict[hospitalChoice][lowestRankDoctorIDIndex]);
 
-                            // Updates bumped Doctor's information so they are considered for a new match during the next run through
-                            DoctorPreference bumpedDoctor = doctorPool.Find(x => x.DoctorID == preferredDoctorsDict[hospitalChoice][lowestRankDoctorIDIndex]);
-                            bumpedDoctor.isMatched = false;
-                            bumpedDoctor.HospitalMatched = null;
-                            matchMade = true;
-                            break;
+                                // Adds new match to hospitalResidentsMatchedDict 
+                                if (hospitalResidentsMatchedDict.ContainsKey(currentHospital.HospitalID))
+                                {
+                                    hospitalResidentsMatchedDict[currentHospital.HospitalID].Add(doctor.DoctorID);
+                                }
+                                else hospitalResidentsMatchedDict.Add(currentHospital.HospitalID, new ArrayList() { doctor.DoctorID });
+
+                                // Update's current Doctor's attributes with the new match 
+                                doctor.isMatched = true;
+                                doctor.HospitalMatched = currentHospital.HospitalID;
+
+                                // Updates bumped Doctor's information so they are considered for a new match during the next run through
+                                DoctorPreference bumpedDoctor = doctorPool.Find(x => x.DoctorID == preferredDoctorsDict[hospitalChoice][lowestRankDoctorIDIndex]);
+                                bumpedDoctor.isMatched = false;
+                                bumpedDoctor.HospitalMatched = null;
+
+                                matchMade = true;
+                                break;
+                            }
+                            
                         }
                         else matchMade = false;
 
