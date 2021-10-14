@@ -344,25 +344,13 @@
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="Logo">
                 <EasingDoubleKeyFrame KeyTime="0" Value="50.4"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="51.896"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="52.896"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="51.896"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="52.64"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="50.64"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="52.64"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="51.56"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="7.4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="50.4"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="21.6"/>
             </DoubleAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="Logo">
                 <EasingDoubleKeyFrame KeyTime="0" Value="190.8"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="189.2"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="189.2"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="190.2"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="189.8"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1.6" Value="189.8"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="190.8"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="191.133"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="-9.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="190.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="9.6"/>
             </DoubleAnimationUsingKeyFrames>
             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="ellipse">
                 <EasingColorKeyFrame KeyTime="0" Value="White"/>
@@ -373,13 +361,15 @@
             </PointAnimationUsingKeyFrames>
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Logo">
                 <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="0.8"/>
                 <EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:0.7" Value="0.2"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0.1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0.5"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="0.1"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:5" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.8" Value="0.2"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.3" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1.8" Value="0.8"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.2" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:2.6" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3" Value="1"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.3" Value="0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:3.5" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
             <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Shape.Fill).(SolidColorBrush.Color)" Storyboard.TargetName="MainBackground">
                 <EasingColorKeyFrame KeyTime="0:0:5" Value="#FFAAFAE6"/>
@@ -451,13 +441,40 @@
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
                 <DiscreteObjectKeyFrame KeyTime="0:0:5.5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ComboBox_Label_Copy">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="Logo">
+                <EasingDoubleKeyFrame KeyTime="0" Value="130"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Height)" Storyboard.TargetName="Logo">
+                <EasingDoubleKeyFrame KeyTime="0" Value="135"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="btn_results">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Hidden}"/>
                 <DiscreteObjectKeyFrame KeyTime="0:0:5.5" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
-            <PointAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransformOrigin)" Storyboard.TargetName="Logo">
-                <EasingPointKeyFrame KeyTime="0:0:5" Value="0.516,0.53"/>
-            </PointAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MainTitle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="16.8"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="MainTitle">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="-2.4"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="MainText">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="14.4"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="MainText">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="-4.8"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="btn_results">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="15.6"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="btn_results">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:5.5" Value="-14.7"/>
+            </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="OnDoubleClick">
             <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Doctor_Result_Container">
@@ -498,18 +515,30 @@
             </DoubleAnimationUsingKeyFrames>
         </Storyboard>
         <Storyboard x:Key="AllResults">
-            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grdAllResults">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="rectangle1">
                 <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
-                <DiscreteObjectKeyFrame KeyTime="0:0:2" Value="{x:Static Visibility.Visible}"/>
             </ObjectAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="grdAllResults">
-                <EasingDoubleKeyFrame KeyTime="0" Value="0.075"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="1"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="rectangle1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.036"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.033"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
             </DoubleAnimationUsingKeyFrames>
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="grdAllResults">
-                <EasingDoubleKeyFrame KeyTime="0" Value="208.2"/>
-                <EasingDoubleKeyFrame KeyTime="0:0:2" Value="0"/>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="rectangle1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="216"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="216.6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
             </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="rectangle1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0.058"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="0.984"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="rectangle1">
+                <EasingDoubleKeyFrame KeyTime="0" Value="183.6"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="3"/>
+            </DoubleAnimationUsingKeyFrames>
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="grdAllResults">
+                <DiscreteObjectKeyFrame KeyTime="0:0:1.5" Value="{x:Static Visibility.Visible}"/>
+            </ObjectAnimationUsingKeyFrames>
         </Storyboard>
 
     </Window.Resources>
@@ -517,7 +546,7 @@
         <EventTrigger RoutedEvent="FrameworkElement.Loaded">
             <BeginStoryboard x:Name="OpenWindow_BeginStoryboard" Storyboard="{StaticResource OpenWindow}"/>
         </EventTrigger>
-        <EventTrigger RoutedEvent="UIElement.KeyUp">
+        <EventTrigger RoutedEvent="Button.Click" SourceName="btn_results">
             <BeginStoryboard x:Name="OnDoubleClick_BeginStoryboard" Storyboard="{StaticResource AllResults}"/>
         </EventTrigger>
         <EventTrigger RoutedEvent="Button.Click" SourceName="btn_match">
@@ -561,7 +590,16 @@
                      TextWrapping="Wrap"  
                      VerticalAlignment="Top" 
                      Height="30" Width="193" 
-                     Text="RESIDENCY MATCHES " FontFamily="Impact" FontSize="22" TextAlignment="Center"/>
+                     Text="RESIDENCY MATCHES " FontFamily="Impact" FontSize="22" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
 
 
 
@@ -571,7 +609,16 @@
             TextWrapping="Wrap"  
             VerticalAlignment="Top" 
             Height="181" Width="193" 
-            Text="The stable match algorithm utilizes a preferences list from both resident applicants and hospitals. Prior to this step each resident applicant has completed a rigorous screening process from various hospitals. Their preferences are ranked ordered and have been loaded into a database with their additional information.  Similarly hospitals have determined their preferred residents post application and interview, and have loaded their ranked lists to the database. Utilizing a stable match algorithm each doctor will be matched to their hospitals based on prioritized rank. More details on how the algorithm is used can be found on the help page. " FontFamily="Calibri Light" FontWeight="Bold" FontSize="10" TextAlignment="Center"/>
+            Text="The stable match algorithm utilizes a preferences list from both resident applicants and hospitals. Prior to this step each resident applicant has completed a rigorous screening process from various hospitals. Their preferences are ranked ordered and have been loaded into a database with their additional information.  Similarly hospitals have determined their preferred residents post application and interview, and have loaded their ranked lists to the database. Utilizing a stable match algorithm each doctor will be matched to their hospitals based on prioritized rank. More details on how the algorithm is used can be found on the help page. " FontFamily="Calibri Light" FontWeight="Bold" FontSize="10" TextAlignment="Center" RenderTransformOrigin="0.5,0.5">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
         <Button x:Name="btn_match" 
                   Content="MATCH" 
                   HorizontalAlignment="Left" 
@@ -580,7 +627,7 @@
                   Width="157" Height="35"
                   Click="Button_Click" FontFamily="Calibri Light" BorderThickness="0" Background="#FFFFFDFD" Grid.ColumnSpan="2"  />
         <ComboBox x:Name="cbxDoctorName" 
-                    ItemsSource="{Binding Doc}" SelectionChanged="cbxDoctorName_SelectionChanged" SelectedItem="DoctorID" DisplayMemberPath="LastName" HorizontalAlignment="Left" 
+                   ItemsSource="{Binding Doc}" SelectionChanged="cbxDoctorName_SelectionChanged" SelectedItem="DoctorID" DisplayMemberPath="LastName" HorizontalAlignment="Left" 
                     VerticalAlignment="Top" 
                     Width="157" Height="35" BorderThickness="0" Cursor="Arrow" IsReadOnly="True" FontFamily="Calibri Light" FontStretch="ExtraExpanded" Style="{DynamicResource ComboBoxStyle1}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Margin="788,106,0,0" Grid.ColumnSpan="2">
             <ComboBox.Background>
@@ -589,6 +636,25 @@
                     <GradientStop Color="#FFFFFF" Offset="1"/>
                 </LinearGradientBrush>
             </ComboBox.Background>
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ComboBoxItem}">
+                    <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate>
+                            <Grid x:Name="gd" TextElement.Foreground="Black">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Margin="0" Grid.Column="0" Text="{Binding FirstName}"/>
+                                <TextBlock Margin="0" Grid.Column="1" Text="{Binding LastName}"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+
+                    </Setter>
+                </Style>
+            </ComboBox.ItemContainerStyle>
         </ComboBox>
         <TextBlock x:Name="ComboBox_Label" 
             HorizontalAlignment="Center"
@@ -597,7 +663,7 @@
             VerticalAlignment="Top" 
             Height="25" Width="157" 
             FontFamily="Calibri Light" TextAlignment="Center" Grid.ColumnSpan="2"><Run Text="SELECT DOCTOR NAME "/></TextBlock>
-        <Rectangle x:Name="rectangle" Fill="White" HorizontalAlignment="Left" Height="223" Margin="677,43,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="2"/>
+        <Rectangle x:Name="rectangle" Fill="White" HorizontalAlignment="Left" Height="332" Margin="677,43,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="2"/>
         <Ellipse x:Name="ellipse" Fill="White" HorizontalAlignment="Left" Height="201" Margin="-282,88,0,0" Stroke="Black" StrokeThickness="0" VerticalAlignment="Top" Width="201" RenderTransformOrigin="0.5,0.5">
             <Ellipse.RenderTransform>
                 <TransformGroup>
@@ -631,22 +697,6 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <DataGrid x:Name="grdAllResults" ItemsSource="{Binding}" 
-                    ScrollViewer.CanContentScroll="True" 
-                    ScrollViewer.VerticalScrollBarVisibility="Auto"
-                    ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                  HorizontalAlignment="Left" Height="450" Margin="10,10,0,0" 
-                  VerticalAlignment="Top" Width="362" IsHitTestVisible="False"
-                  FontFamily="Calibri Light" BorderThickness="0" AllowDrop="True" GridLinesVisibility="None" AutoGenerateColumns="True" Background="White" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
-            <DataGrid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </DataGrid.RenderTransform>
-        </DataGrid>
         <StackPanel x:Name="stackPanel" Margin="161,335,30,24.8" Orientation="Vertical" RenderTransformOrigin="0.502,0.497" Visibility="Hidden" Grid.Column="1">
 
             <TextBox x:Name="txtDocFirstName" 
@@ -758,14 +808,47 @@
             VerticalAlignment="Top" 
             Height="111.8" Width="145" 
             Text="First and foremost we would like to congratulate you on matching with your hospital. This has been a rigorous process, and your hospital has ranked you as one of their highest preferred applicants from the many other candidates. Expect to hear directly from your matched Residency program soon. " FontFamily="Calibri Light" FontWeight="Bold" FontSize="10" Visibility="Hidden" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="ComboBox_Label_Copy" 
-            HorizontalAlignment="Center"
-            Margin="425,409.8,173,0" 
-            TextWrapping="Wrap"  
-            VerticalAlignment="Top" 
-            Height="25" Width="193" 
-            FontFamily="Calibri Light" Text="USE THE KEY UP BUTTON ON YOUR KEYBOARD TO SHOW ALL RESULTS  " FontSize="8" TextAlignment="Center" RenderTransformOrigin="0.6,0.532"/>
+        <Rectangle x:Name="rectangle1" Margin="0,10,401,42" Fill="White" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
 
+        </Rectangle>
+        <DataGrid x:Name="grdAllResults" ItemsSource="{Binding}" 
+                  HorizontalAlignment="Left" Height="450" Margin="10,10,0,0" 
+                  VerticalAlignment="Top" Width="380" IsHitTestVisible="False"
+                  FontFamily="Calibri Light" BorderThickness="0" AllowDrop="True" GridLinesVisibility="None" AutoGenerateColumns="True" Background="White" Visibility="Hidden" RenderTransformOrigin="0.5,0.5">
+            <DataGrid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </DataGrid.RenderTransform>
+         
+        </DataGrid>
+        <Button x:Name="btn_results" 
+                  Content="SHOW ALL" 
+                  HorizontalAlignment="Left" 
+                  Margin="473.2,418.098,0,0" 
+                  VerticalAlignment="Top"
+                  Width="89.8" Height="25.2"
+                  Click="Button_Click" FontFamily="Calibri Light" BorderThickness="0" Background="#FFFFFDFD" FontSize="10" RenderTransformOrigin="0.5,0.5"  >
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
 
 
     </Grid>

@@ -143,7 +143,7 @@ namespace ResidencyMATCH
                 ResultTitle.Text = "Unfortunately,";
                 ResultText.Text = "You have not been selected for a Residency program at this time.  Please contact your application manager";
                 txtDocFirstName.Text = "";
-                txtDocLastName.Text = "Applicant Name:  " + selectedDoctor.LastName;
+                txtDocLastName.Text = "Applicant Name:  " + selectedDoctor.FirstName +" "+ selectedDoctor.LastName;
                 txtHospitalName.Text = "";
                 txtHospitalCity.Text = "";
                 txtHospitalState.Text = "";
@@ -167,7 +167,8 @@ namespace ResidencyMATCH
             var allResult = from dp in Context.DoctorPreferences
                          join h in Context.Hospitals on dp.HospitalMatched equals h.HospitalID
                          join d in Context.Doctors on dp.DoctorID equals d.DoctorID
-                         select new { FirstName = d.FirstName, LastName = d.LastName, Hospital = h.Name, City = h.City, State = h.State };
+                         orderby h.Name
+                         select new { Hospital = h.Name, City = h.City, State = h.State ,FirstName = d.FirstName, LastName = d.LastName };
 
             var results = allResult.ToList();
             grdAllResults.ItemsSource = results;
